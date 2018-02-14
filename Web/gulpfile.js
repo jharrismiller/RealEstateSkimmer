@@ -1,4 +1,5 @@
-﻿/// <reference path="node_modules/jquery/dist/jquery.min.js" />
+﻿/// <binding AfterBuild='copy-common-css, copy-common-js' />
+/// <reference path="node_modules/jquery/dist/jquery.min.js" />
 /// <reference path="node_modules/jquery/dist/jquery.min.js" />
 /// <binding AfterBuild='copy-libs' Clean='clean' />
 "use strict";
@@ -52,8 +53,7 @@ gulp.task('copy-common-css', function () {
 gulp.task('copy-common-js', function () {
     return gulp.src([
         './node_modules/bootstrap/dist/js/bootstrap.min.js',
-        './node_modules/jquery/dist/jquery.min.js',
-        './node_modules/fontawesome/*.js']).pipe(gulp.dest('./wwwroot/lib/js/'));
+        './node_modules/jquery/dist/jquery.min.js']).pipe(gulp.dest('./wwwroot/lib/js/'));
 });
 //gulp.task('copy-libs', function () {
 //    return gulp.src(['./node_modules/bootstrap/**/bootstrap.min.css'])
