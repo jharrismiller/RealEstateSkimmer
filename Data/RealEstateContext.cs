@@ -1,13 +1,16 @@
 ﻿using Data.Model;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+
 namespace Data
 {
     public class RealEstateContext : DbContext, IRealEstateContext
     {
-     
+
         public RealEstateContext(DbContextOptions<RealEstateContext> options) : base(options)
         { }
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
             modelBuilder.Entity<PropertyTags>()
                 .HasKey(k => new { k.PropertyId, k.PropertyTagId });
 
@@ -22,10 +25,20 @@ namespace Data
         public DbSet<PropertyTag> PropertyTag { get; set; }
         public DbSet<PropertyType> PropertyType { get; set; }
 
+
+        public new int SaveChanges()
+        {
+            return base.SaveChanges();
+        }
+        public Task<int> SaveChangesAsync()
+        {
+            return base.SaveChangesAsync();
+        }
+
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
-            
-        //    optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+
+        //    optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=RealEstateAnalysis;Integrated Security=True");
         //}
 
 
