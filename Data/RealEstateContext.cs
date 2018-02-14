@@ -8,7 +8,8 @@ namespace Data
     {
 
         public RealEstateContext(DbContextOptions<RealEstateContext> options) : base(options)
-        { }
+        {
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PropertyTags>()

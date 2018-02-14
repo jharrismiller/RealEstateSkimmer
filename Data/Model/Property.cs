@@ -11,6 +11,14 @@ namespace Data.Model
         public string RealtorUrl { get; set; }
         public int? Beds { get; set; }
         public int? Baths { get; set; }
+        [StringLength(500)]
+        public string ListedAddress { get; set; }
+
+        [StringLength(25)]
+        public string RealtorListingId { get; set; }
+        [StringLength(25)]
+        public string RealtorPropertyId { get; set; }
+
         [StringLength(150)]
         public string Address { get; set; }
         [StringLength(50)]
@@ -23,6 +31,9 @@ namespace Data.Model
         public string Zip { get; set; }
         public byte? PropertyTypeId { get; set; }
         public byte? PropertyStatusId { get; set; }
+
+        public int? LotSize { get; set; }
+        public int? AskingPrice { get; set; }
 
         [ForeignKey("PropertyStatusId")]
         public virtual PropertyStatus PropertyStatus { get; set; }

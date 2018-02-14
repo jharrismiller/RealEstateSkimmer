@@ -11,9 +11,10 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    partial class RealEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20180214062533_AdditionalPropertyInfo")]
+    partial class AdditionalPropertyInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +32,6 @@ namespace Data.Migrations
                     b.Property<string>("Address2")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("AskingPrice");
-
                     b.Property<int?>("Baths");
 
                     b.Property<int?>("Beds");
@@ -42,8 +41,6 @@ namespace Data.Migrations
 
                     b.Property<string>("ListedAddress")
                         .HasMaxLength(500);
-
-                    b.Property<int?>("LotSize");
 
                     b.Property<byte?>("PropertyStatusId");
 
