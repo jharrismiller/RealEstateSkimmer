@@ -10,6 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Web.Services;
 using Common;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace Web
 {
@@ -55,7 +58,11 @@ namespace Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"node_modules")),
+                RequestPath = new PathString("/node_modules")
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
