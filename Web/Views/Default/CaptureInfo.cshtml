@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Capture";
+}
+<h1>Capture</h1>
+
+@*https://www.realtor.com/realestateandhomes-search/22206/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-220000/radius-50*@
+<form method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label>Url</label>
+        <input name="url" class="form-control" type="url" value="https://www.realtor.com/realestateandhomes-search/22206/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-220000/radius-50" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

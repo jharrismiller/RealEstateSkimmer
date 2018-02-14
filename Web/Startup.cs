@@ -71,7 +71,7 @@ namespace Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Default}/{action=Index}/{id?}");
+                    template: "{controller=Default}/{action=CaptureInfo}/{id?}");
             });
         }
     }
