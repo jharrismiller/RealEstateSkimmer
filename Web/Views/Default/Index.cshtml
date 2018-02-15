@@ -1,7 +1,24 @@
-﻿
+﻿@model Web.Models.Default.RealtorSearchViewModel
 @{
-    ViewBag.Title = "Start";
+    ViewBag.Title = "Realtor";
 }
-<h1>Finally</h1>
-
-@*https://www.realtor.com/realestateandhomes-search/22206/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-220000/radius-50*@
+<form method="post">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="form-group">
+        @Html.LabelFor(x => x.Miles)
+        @Html.TextBoxFor(x => x.Miles, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Miles)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.PagesToCapture)
+        @Html.TextBoxFor(x => x.PagesToCapture, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PagesToCapture)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.ZipCode)
+        @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ZipCode)
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Models\Homespan\" />
     <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 

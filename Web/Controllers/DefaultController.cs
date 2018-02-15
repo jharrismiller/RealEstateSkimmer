@@ -21,19 +21,15 @@ namespace Web.Controllers
         {
             _context = context;
         }
+   
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult CaptureInfo()
         {
             var viewModel = new RealtorSearchViewModel();
             return View(viewModel);
         }
 
         [HttpPost, ValidateAntiForgeryToken]
-        public async Task<IActionResult> CaptureInfo(RealtorSearchViewModel viewModel)
+        public async Task<IActionResult> Index(RealtorSearchViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
             using (HttpClient client = new HttpClient())
@@ -46,9 +42,9 @@ namespace Web.Controllers
                 var gatheredData = new List<Data.Model.Property>();
                 var parser = new HtmlParser();
 
-                while (pageNumber < viewModel.PagesToCapture)
+                while (pageNumber <= viewModel.PagesToCapture)
                 {
-                    var url = $"https://www.realtor.com/realestateandhomes-search/{viewModel.ZipCode}/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-220000/pnd-hide/radius-{viewModel.Miles}/sby-6/{ (pageNumber == 1 ? "" : "pg-" + pageNumber.ToString())}";
+                    var url = $"https://www.realtor.com/realestateandhomes-search/{viewModel.ZipCode}/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-{viewModel.MaxPrice}/pnd-hide/radius-{viewModel.Miles}/sby-6/{ (pageNumber == 1 ? "" : "pg-" + pageNumber.ToString())}";
                     using (HttpResponseMessage response = await client.GetAsync(url))
                     {
                         if (response.IsSuccessStatusCode)
@@ -61,8 +57,8 @@ namespace Web.Controllers
                                 var props = document.QuerySelectorAll("li[data-listingid]");
                                 foreach (var prop in props)
                                 {
-                                    var info = prop.QuerySelector("[class='data-wrap']");
                                     var address = prop.QuerySelector("span[itemprop='address']");
+
                                     var newProp = new Data.Model.Property()
                                     {
                                         Address = address.QuerySelector("[itemprop='streetAddress']")?.TextContent,
@@ -74,18 +70,13 @@ namespace Web.Controllers
                                         RealtorPropertyId = prop.GetAttribute("data-propertyid"),
                                         Latitude = prop.QuerySelector("[itemprop='latitude']")?.GetAttribute("content"),
                                         Longitude = prop.QuerySelector("[itemprop='longitude']")?.GetAttribute("content"),
-                                        AskingPrice = GetNumber(info.GetAttribute("data-price")),
-                                        Beds = GetNumber(info.GetAttribute("data-beds")),
+                                        AskingPrice = GetNumber(prop.GetAttribute("data-price")),
+                                        Beds = GetNumber(prop.QuerySelector("[data-label='property-meta-beds']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
+                                        Baths = GetDecimal(prop.GetAttribute("data-baths")),
                                         Sqft = GetNumber(prop.QuerySelector("[data-label='property-meta-sqft']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
-                                        LotSize = GetNumber(prop.QuerySelector("[data-label='property-meta-lotsize']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
+                                        LotSize = GetNumber(prop.GetAttribute("data-lot_size")),
                                     };
-                                    var fullBaths = GetNumber(info.GetAttribute("data-baths_full"));
-                                    var halfBaths = GetNumber(info.GetAttribute("data-baths_half"));
-                                    if (fullBaths != null && halfBaths != null)
-                                    {
-                                        newProp.Baths = (decimal)fullBaths + ((decimal)halfBaths * (decimal).5);
-                                    }
-                                    var status = prop.QuerySelector("[data-status]")?.GetAttribute("data-status");
+                                    var status = prop.GetAttribute("data-status");
                                     if (!string.IsNullOrEmpty(status))
                                     {
                                         if (!propertyStatuses.Any(x => x.Name == status))
@@ -147,6 +138,20 @@ namespace Web.Controllers
                                             }
                                             property.PropertyTypeId = propertyTypes.First(x => x.Name == propType).Id;
                                         }
+                                        var taxIndex = pageHtml.IndexOf("\"tax\":");
+                                        if (taxIndex > 0)
+                                        {
+                                            var taxEnd = pageHtml.IndexOf(",", taxIndex);
+                                            if (taxEnd > 0 && taxEnd < taxIndex + 14)
+                                            {
+                                                var start = taxIndex + 6;
+                                                var tax = GetNumber(pageHtml.Substring(start, taxEnd - start));
+                                                if (tax != null)
+                                                {
+                                                    property.AnnualTax = tax;
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                                 else break;
@@ -194,6 +199,14 @@ namespace Web.Controllers
                 }
             }
             return null;
+        }
+
+
+        [HttpDelete]
+        public ActionResult RentBit() {
+
+
+            return View();
         }
     }
 

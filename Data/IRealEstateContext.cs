@@ -10,6 +10,7 @@ namespace Data
         DbSet<PropertyStatus> PropertyStatus { get; set; }
         DbSet<PropertyTags> PropertyTags { get; set; }
         DbSet<PropertyTag> PropertyTag { get; set; }
+        DbSet<RentBits> RentBits { get; set; }
         DbSet<PropertyType> PropertyType { get; set; }
 
         int SaveChanges();

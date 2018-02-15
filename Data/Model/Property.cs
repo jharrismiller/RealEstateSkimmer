@@ -36,7 +36,8 @@ namespace Data.Model
         public string SourcePropertyId { get; set; }
         public int? LotSize { get; set; }
         public int? AskingPrice { get; set; }
-
+        public int? AnnualTax { get; set; }
+        public int? AnnualHOA { get; set; }
         public int? Sqft { get; set; }
         [ForeignKey("PropertyStatusId")]
         public virtual PropertyStatus PropertyStatus { get; set; }

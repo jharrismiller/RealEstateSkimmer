@@ -11,5 +11,7 @@ namespace Web.Models.Default
 
         [Required, Display(Name="Pages to Capture")]
         public int PagesToCapture { get; set; } = 20;
+        [Required, Display(Name = "Max Price")]
+        public int MaxPrice { get; set; } = 220000;
     }
 }

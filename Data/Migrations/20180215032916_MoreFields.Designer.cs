@@ -11,9 +11,10 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    partial class RealEstateContextModelSnapshot : ModelSnapshot
+    [Migration("20180215032916_MoreFields")]
+    partial class MoreFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,33 +141,6 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PropertyType");
-                });
-
-            modelBuilder.Entity("Data.Model.RentBits", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Location")
-                        .HasMaxLength(70);
-
-                    b.Property<int>("OneBedRoom");
-
-                    b.Property<int>("ThreeOrMoreBedRoom");
-
-                    b.Property<int>("TwoBedRoom");
-
-                    b.Property<string>("Type")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("Url");
-
-                    b.Property<string>("Zip")
-                        .HasMaxLength(10);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RentBits");
                 });
 
             modelBuilder.Entity("Data.Model.Property", b =>
