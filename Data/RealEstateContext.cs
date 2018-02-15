@@ -19,13 +19,17 @@ namespace Data
                 .Property(b => b.CreatedOn)
                     .HasDefaultValueSql("getdate()");
 
+           
+            modelBuilder.Entity<Property>().Property(r => r.Beds)
+            .HasColumnType("decimal(3,1)");
+
         }
         public DbSet<Property> Property { get; set; }
         public DbSet<PropertyStatus> PropertyStatus { get; set; }
         public DbSet<PropertyTags> PropertyTags { get; set; }
         public DbSet<PropertyTag> PropertyTag { get; set; }
         public DbSet<PropertyType> PropertyType { get; set; }
-
+        public string MLS { get; set; }
 
         public new int SaveChanges()
         {
