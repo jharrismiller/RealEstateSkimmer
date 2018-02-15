@@ -20,5 +20,16 @@
         @Html.TextBoxFor(x => x.ZipCode, new { @class = "form-control" })
         @Html.ValidationMessageFor(x => x.ZipCode)
     </div>
+    <div class="form-group">
+        @Html.LabelFor(x => x.MaxPrice)
+        @Html.TextBoxFor(x => x.MaxPrice, new { type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.MaxPrice)
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br />
+<h2>Clean Up Data</h2>
+<form method="post" action="@Url.Action("CleanUpData")">
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Do It</button>
 </form>

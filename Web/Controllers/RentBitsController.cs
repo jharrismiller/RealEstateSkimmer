@@ -4,6 +4,10 @@ using Data;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models.RentBits;
 using System.Linq;
+using AngleSharp.Parser.Html;
+using Data.Model;
+using Common;
+
 namespace Web.Controllers
 {
     public class RentBitsController : Controller
@@ -59,7 +63,12 @@ namespace Web.Controllers
                  where rb == null && p.Zip != null
                  select new { p.Zip, PropertyType = "A" }
                 ).ToList();
-            string baseStringUrl = "http://rentbits.com/rb/rates.do?rid=&pageNo=0&cpn=0&location={0}&type={1}&beds=all";
+            var parser = new HtmlParser();
+            //string baseStringUrl = "http://rentbits.com/rb/rates.do?rid=&pageNo=0&cpn=0&location={0}&type={1}&beds=all";
+            string baseStringUrl = "http://rentbits.com/rb/rate/stats.do?location={0}&type={1}";
+            //http://rentbits.com/rb/rate/stats.do?location=20171&type=H
+
+
             using (HttpClient client = new HttpClient())
             {
                 foreach (var needDataParameters in needingData)
@@ -72,13 +81,32 @@ namespace Web.Controllers
                             using (HttpContent content = response.Content)
                             {
                                 string pageHtml = await content.ReadAsStringAsync();
-                                var letUsSee = 1;
+                                var document = parser.Parse(pageHtml);
+                                var table = document.QuerySelector("[class='statsTable']");
+                                if (table == null) continue;
+                                var averageSecton = table.QuerySelectorAll("tr").FirstOrDefault(x => x.InnerHtml.Contains("Average:"));
+                                if (averageSecton == null) continue;
+                                var td = averageSecton.QuerySelectorAll("td");
+                                if (td.Length == 5)
+                                {
+                                    var rent = new RentBits()
+                                    {
+                                        Zip = needDataParameters.Zip,
+                                        Url = url,
+                                        OneBedRoom = NumberHelper.GetNumber(td[2].TextContent) ?? 0,
+                                        TwoBedRoom = NumberHelper.GetNumber(td[3].TextContent) ?? 0,
+                                        ThreeOrMoreBedRoom = NumberHelper.GetNumber(td[4].TextContent) ?? 0,
+                                        Type = needDataParameters.PropertyType=="H"  ? "House" : "Apartment"
+                                    };
+                                    _context.RentBits.Add(rent);
+                                }
+
                             }
 
                         }
                     }
                 }
-
+                _context.SaveChanges();
             }
             return RedirectToAction("Index");
         }

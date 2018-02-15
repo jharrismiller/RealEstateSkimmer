@@ -1,0 +1,3127 @@
+﻿
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- trend layout -->
+<!-- /rb/layout/trend/layout.jsp -->
+
+<html>
+
+
+<head>
+    <title>Rental Rates in 20171</title>
+    <meta name="Description" content="Search rates, prices, stats, statistics for homes, condos, townhouses and apartments for rent in
+20171 for free. Fast, easy price search. ashburn,mc lean,potomac,reston,fairfax,chantilly,vienna,centreville,sterling,burke">
+    <meta name="Keywords" content="20171 houses rental rates, rental rates for homes in
+20171, rental rates for apartments in 20171, condos rental rates
+in 20171, townhomes rental rates in 20171, 20171
+rentals,">
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/rb/common/main.js?v=5"></script>
+    <script type="text/javascript" src="/rb/common/swfobject.js?v=1"></script>
+    <script type="text/javascript" src="/rb/common/ajax.js?v=2"></script>
+    <script type="text/javascript" src="/rm/common/atemplate.js?v=1"></script>
+    <script type="text/javascript" src="/rb/common/auth.js?v=1"></script>
+    <script type="text/javascript" src="http://ads.rentbits.com/rm/keepAlive?rb=1"></script>
+    <link rel="stylesheet" type="text/css" href="/rb/common/main.css?v=24">
+
+    <style type="text/css">
+        /* Begin excerpt Blueprint CSS reset.css */
+        html {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {
+            margin: 0;
+            padding: 0;
+            border: 0; /*font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;*/
+        }
+        /* End excerpt Blueprint CSS reset.css */
+
+        /* Begin excerpt Blueprint CSS typography.css */
+        /* Note localized some classes */
+        p {
+            margin: 0 0 1.5em 0;
+        }
+
+        li ul, li ol {
+            margin: 0 1.5em;
+        }
+
+        ul, ol {
+            margin: 0 1.5em 1.5em 1.5em;
+        }
+
+        ul {
+            list-style-type: disc;
+        }
+
+        ol {
+            list-style-type: decimal;
+        }
+
+        .small {
+            font-size: .8em;
+            margin-bottom: 1.875em;
+            line-height: 1.875em;
+        }
+
+        .large {
+            font-size: 1.2em;
+            line-height: 2.5em;
+            margin-bottom: 1.25em;
+        }
+
+        .quiet {
+            color: #666;
+        }
+
+        .bp-error, .bp-alert, .bp-notice, .bp-success, .bp-info {
+            padding: 0.8em;
+            margin-bottom: 1em;
+            border: 2px solid #ddd;
+        }
+
+        .bp-error, .bp-alert {
+            background: #fbe3e4;
+            color: #8a1f11;
+            border-color: #fbc2c4;
+        }
+
+        .bp-notice {
+            background: #fff6bf;
+            color: #514721;
+            border-color: #ffd324;
+        }
+
+        .bp-success {
+            background: #e6efc2;
+            color: #264409;
+            border-color: #c6d880;
+        }
+
+        .bp-info {
+            background: #d5edf8;
+            color: #205791;
+            border-color: #92cae4;
+        }
+
+        .bp-error a, .bp-alert a {
+            color: #8a1f11;
+        }
+
+        .bp-notice a {
+            color: #514721;
+        }
+
+        .bp-success a {
+            color: #264409;
+        }
+
+        .bp-info a {
+            color: #205791;
+        }
+        /* End excerpt Blueprint CSS typography.css */
+
+        /* Begin excerpt Blueprint CSS grid.css */
+        div.prepend-top, .prepend-top {
+            margin-top: 1em;
+        }
+
+        div.append-bottom, .append-bottom {
+            margin-bottom: 1em;
+        }
+        /* End excerpt Blueprint CSS grid.css */
+
+        div.container {
+            clear: both;
+            margin: 0 auto;
+            padding: 0;
+            text-align: left;
+            width: 940px;
+            overflow: hidden;
+        }
+
+        div.center-children {
+            float: left;
+            clear: both;
+            position: relative;
+            left: 50%;
+        }
+
+        .clearfix:after,
+        .container:after {
+            content: "\0020";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+            overflow: hidden;
+        }
+
+        .clearfix,
+        .container {
+            display: block;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .last {
+            margin-right: 0 !important;
+        }
+
+        h1 {
+            text-align: left;
+            margin: 0 0 0.5em 0;
+            padding: 0 0 0.5em 0;
+            color: #477dc5;
+            font-size: 2em;
+            font-weight: normal;
+        }
+
+        h2 {
+            color: #477dc5;
+            font-weight: normal;
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        h3 {
+            color: #477dc5;
+            font-weight: normal;
+            font-size: 18px;
+            margin-bottom: 0px;
+        }
+
+        h4 {
+            clear: both;
+            margin: 0 0 0.5em 0;
+            padding: 0;
+            color: #477dc5;
+            font-size: 1.5em;
+            font-weight: normal;
+            background-color: #fff;
+            letter-spacing: normal;
+            text-transform: capitalize;
+        }
+
+        h5 {
+            color: #477dc5;
+            font-weight: normal;
+            margin-top: 35px;
+            margin-left: 8px;
+            margin-bottom: 20px;
+        }
+
+        h6 {
+            color: #307CD6;
+            font-weight: normal;
+            margin-top: 15px;
+            margin-left: 15px;
+            margin-bottom: 20px;
+        }
+
+        .title {
+            color: #f3781a;
+            font-size: 14px;
+        }
+
+        address {
+            font-style: normal;
+        }
+
+        #overlay {
+            background-image: url("/img/cm/css/overlay-000-50.png") !important;
+        }
+
+        div.outer-alt-container {
+            padding-top: 28px;
+            background: transparent url("/img/cm/css/gradient-up-full-width.png") no-repeat center top;
+        }
+
+        div.mid-alt-container {
+            float: left;
+            padding-bottom: 28px;
+            background: transparent url("/img/cm/css/gradient-down-full-width.png") no-repeat center bottom;
+        }
+
+        div.inner-alt-container {
+            float: left;
+            width: 938px;
+            border: 1px solid #b0afb5;
+        }
+
+        p.findmore {
+            clear: both;
+            margin: 1.5em 0;
+            padding: 0 10px;
+            text-align: right;
+        }
+
+            p.findmore a {
+                margin: 0;
+                padding: 0;
+                font-size: 0.9em;
+                color: #5285cf;
+                text-decoration: none;
+            }
+
+                p.findmore a:hover {
+                    text-decoration: underline;
+                }
+
+        #header {
+        }
+
+        h2#logo-wordmark {
+            float: left;
+            margin: 0;
+            padding: 0;
+            font-size: 1em;
+        }
+
+            h2#logo-wordmark a {
+                margin: 10px 0 0 0;
+                padding: 0;
+                display: block;
+                width: 168px;
+                height: 75px;
+                text-indent: -9999px;
+                background: transparent url("/img/cm/logo/logo-v3.png") no-repeat left bottom;
+            }
+
+                h2#logo-wordmark a:hover {
+                    background-position: left top;
+                }
+
+        #header iframe {
+            float: right;
+            margin: 0 0 0 14px;
+            padding: 2px 0 0 0;
+            border: none;
+            overflow: hidden;
+            width: 90px;
+            height: 22px;
+            border-right: 1px solid #b0afb5;
+        }
+
+        ul.tpmenu {
+            position: relative;
+            top: 0;
+            float: right;
+            margin: 0;
+            padding: 0;
+            border-left: 1px solid #b0afb5;
+        }
+
+            ul.tpmenu li {
+                float: left;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                ul.tpmenu li a {
+                    display: block;
+                    margin: 0;
+                    padding: 7px 10px;
+                    font-size: 0.9em;
+                    line-height: 1em;
+                    text-decoration: none;
+                    color: #b0afb5;
+                    border-bottom: 1px solid #fff;
+                    border-right: 1px solid #b0afb5;
+                    background: transparent url("/img/cm/css/background-tpmenu-hover.png") repeat-x left top;
+                }
+
+                    ul.tpmenu li a:visited {
+                        color: #b0afb5;
+                    }
+
+                    ul.tpmenu li a:hover {
+                        color: #4e86bf;
+                        border-bottom: 1px solid #b0afb5;
+                        background: transparent url("/img/cm/css/background-tpmenu-hover.png") repeat-x left bottom;
+                    }
+
+                ul.tpmenu li#log-in a {
+                    background-color: #690;
+                    color: #fff;
+                    text-shadow: #360 0 0 2px;
+                    border-bottom-color: #b0afb5;
+                }
+
+                    ul.tpmenu li#log-in a:hover {
+                        background-color: #9c0;
+                        color: #fff;
+                        border-bottom-color: #666;
+                        background-image: none;
+                    }
+
+                ul.tpmenu li#plus-one {
+                    padding: 3px 14px 0 14px;
+                    height: 21px;
+                    border-right: 1px solid #b0afb5;
+                }
+
+                    ul.tpmenu li#plus-one div {
+                        width: 56px !important;
+                    }
+
+        #header ul.tpmenu li#plus-one div iframe {
+            margin: 0;
+            border: none;
+        }
+
+        ul.tabs {
+            position: relative;
+            bottom: 14px;
+            float: right;
+            margin: 0;
+            padding: 0 0 26px 0;
+            width: 100%;
+            background: transparent url("/img/cm/css/background-tabs-bottom.png") no-repeat center bottom;
+        }
+
+            ul.tabs li {
+                float: right;
+                margin: 0 8px 0 0;
+                padding: 2px 0 0 0;
+                list-style: none;
+            }
+
+                ul.tabs li a {
+                    display: block;
+                    float: left;
+                    margin: -2px 0 0 0;
+                    padding: 0 12px 0 0;
+                    font-weight: normal;
+                    text-decoration: none;
+                    background: #477dc5 url("/img/cm/css/background-tabs-right.png") no-repeat right top;
+                }
+
+                    ul.tabs li a:visited {
+                        color: #efefef;
+                    }
+
+                    ul.tabs li a span {
+                        display: block;
+                        float: left;
+                        margin: 0;
+                        padding: 0 0 0 12px;
+                        color: #efefef;
+                        font-size: 1.25em;
+                        line-height: 1.75em;
+                        background: transparent url("/img/cm/css/background-tabs-left.png") no-repeat left top;
+                    }
+
+                    ul.tabs li a:hover,
+                    ul.tabs li.sel a,
+                    ul.tabs li.sel a:visited {
+                        color: #255493;
+                        background-color: #dff0fa;
+                    }
+
+                        ul.tabs li a:hover span,
+                        ul.tabs li.sel a span {
+                            cursor: pointer;
+                            color: #255493;
+                        }
+
+        #post-header {
+            margin-bottom: 1em;
+        }
+
+        ul.sbmn {
+            float: left;
+            text-align: left;
+            margin: 0;
+            padding: 0;
+            border-left: 1px solid #b0afb5;
+        }
+
+            ul.sbmn li {
+                float: left;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                ul.sbmn li a {
+                    margin: 0;
+                    padding: 2px 10px;
+                    text-decoration: none;
+                    border-right: 1px solid #b0afb5;
+                }
+
+                    ul.sbmn li a:hover {
+                        text-decoration: underline;
+                    }
+
+        .infobox {
+            padding: 4px;
+            margin: 4px;
+            border: 1px solid #ccc;
+            width: 240px;
+        }
+
+            .infobox .hdr {
+                height: 37px;
+                font-size: 14px;
+                text-align: center;
+                padding: 9px 0px 0px 0px;
+                margin: 0px;
+                background: #fff url('/img/cm/menu/boxbg.jpg') repeat-x;
+            }
+
+            .infobox .txt {
+                padding: 4px 6px 12px 6px;
+                border-bottom: 1px solid #ccc;
+                text-align: left;
+            }
+
+            .infobox a {
+                width: 90%;
+                display: block;
+                text-align: right;
+                padding: 10px 8px;
+            }
+
+        a.offensive {
+            margin: 0;
+            padding: 0 0 0 18px;
+            display: block;
+            min-height: 16px;
+            font-style: italic;
+            background: transparent url("/img/cm/css/icons/flag_gray.png") no-repeat left top;
+        }
+
+            a.offensive:hover {
+                background-image: url("/img/cm/css/icons/flag_red.png");
+            }
+
+        a.community-guidelines {
+            margin: 0;
+            padding: 0 0 0 18px;
+            display: block;
+            min-height: 16px;
+            background: transparent url("/img/cm/css/icons/page.png") no-repeat left top;
+        }
+
+            a.community-guidelines:hover {
+                background-image: url("/img/cm/css/icons/page_go.png");
+            }
+
+        div.callout-outer {
+            float: left;
+            margin: 0 0 1em 0;
+            padding: 0 0 1em 0;
+            text-align: left;
+        }
+
+            div.callout-outer div.callout-mid {
+                float: left;
+                margin: 0;
+                background-color: #dff0fa;
+            }
+
+            div.callout-outer h1 {
+                margin: 0;
+                padding: 0.5em 0;
+                text-align: center;
+                font-size: 3em;
+                font-weight: normal;
+                color: #369;
+            }
+
+            div.callout-outer.full-width {
+                background: #dff0fa url("/img/cm/css/background-callout-full-width-bottom.png") no-repeat center bottom;
+            }
+
+                div.callout-outer.full-width div.callout-mid {
+                    padding: 10px 25px;
+                    background: transparent url("/img/cm/css/background-callout-full-width-top.png") no-repeat center top;
+                }
+
+                div.callout-outer.full-width div.callout-inner {
+                    width: 890px;
+                }
+
+            div.callout-outer.mid-full-width {
+                width: 575px;
+                background: #dff0fa url("/img/cm/css/background-callout-mid-full-width-bottom.png") no-repeat center bottom;
+            }
+
+                div.callout-outer.mid-full-width div.callout-mid {
+                    padding: 10px;
+                    background: transparent url("/img/cm/css/background-callout-mid-full-width-top.png") no-repeat center top;
+                }
+
+                div.callout-outer.mid-full-width div.callout-inner {
+                    width: 555px;
+                }
+
+            div.callout-outer.left-full-width {
+                width: 760px;
+                background: #dff0fa url("/img/cm/css/background-callout-left-full-width-bottom.png") no-repeat center bottom;
+            }
+
+                div.callout-outer.left-full-width div.callout-mid {
+                    padding: 10px;
+                    background: transparent url("/img/cm/css/background-callout-left-full-width-top.png") no-repeat center top;
+                }
+
+                div.callout-outer.left-full-width div.callout-inner {
+                    width: 740px;
+                }
+
+        div.mid-half-width-container {
+            float: left;
+            margin: 0 10px 0 0;
+            padding: 0;
+            width: 375px;
+        }
+
+        div.callout-outer.mid-half-width {
+            width: 375px;
+            background: #dff0fa url("/img/cm/css/background-callout-mid-half-width-bottom.png") no-repeat center bottom;
+        }
+
+            div.callout-outer.mid-half-width div.callout-mid {
+                padding: 10px;
+                background: transparent url("/img/cm/css/background-callout-mid-half-width-top.png") no-repeat center top;
+            }
+
+            div.callout-outer.mid-half-width div.callout-inner {
+                width: 355px;
+            }
+
+            div.callout-outer.mid-half-width.with-icon h2 {
+                margin: 0;
+                padding: 0;
+                color: #333;
+                font-size: 18px;
+                line-height: 21px;
+            }
+
+            div.callout-outer.mid-half-width.with-icon div.callout-inner {
+                padding-left: 75px;
+                width: 280px;
+            }
+
+            div.callout-outer.mid-half-width.with-icon.phone div.callout-inner {
+                background: transparent url("/img/cm/css/icons-illustrations/phone-43x27.png") no-repeat 10px 10px;
+            }
+
+            div.callout-outer.mid-half-width.with-icon.email div.callout-inner {
+                background: transparent url("/img/cm/css/icons-illustrations/email-envelope-43x28.png") no-repeat 10px 10px;
+            }
+
+
+        .driver {
+            float: left;
+            margin: 1em 0 0 0;
+            padding: 0;
+            text-align: left;
+            width: 938px;
+            border: 1px solid #b0afb5;
+        }
+
+            .driver h3 {
+                margin: 0;
+                padding: 10px;
+                font-weight: bold;
+                font-size: 1.25em;
+                line-height: 1em;
+                color: #333;
+                border-bottom: 1px solid #b0afb5;
+                background: #e8e8e8 url("/img/cm/css/background-driver-header.png") repeat-x left top;
+            }
+
+            .driver p {
+                margin: 1.5em 0 0 0;
+                padding: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .driver.third-width {
+                clear: none;
+                float: left;
+                margin: 1em 15px 0 0;
+                width: 244px;
+                height: 12em;
+                position: relative;
+                right: 50%;
+            }
+
+        div.driver-ask-a-question {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            height: 120px;
+            overflow: hidden;
+        }
+
+            div.driver-ask-a-question a {
+                display: block;
+            }
+
+            div.driver-ask-a-question p {
+                margin: 0;
+                padding: 0;
+            }
+
+                div.driver-ask-a-question p.ask-a-question {
+                    position: relative;
+                    top: -36px;
+                }
+
+                    div.driver-ask-a-question p.ask-a-question a {
+                        margin: 0;
+                        padding: 0;
+                        width: 170px;
+                        height: 33px;
+                        text-indent: -9999px;
+                        background: transparent url("/img/cm/css/button-ask-a-question.png") no-repeat center bottom;
+                    }
+
+                        div.driver-ask-a-question p.ask-a-question a:hover {
+                            background-position: center top;
+                        }
+
+        p.browse-in-the-know {
+            margin: 10px 0;
+            padding: 0;
+        }
+
+            p.browse-in-the-know a {
+                display: block;
+                margin: 0;
+                padding: 0;
+                width: 170px;
+                height: 52px;
+                text-indent: -9999px;
+                background: transparent url("/img/cm/css/button-browse-in-the-know.png") no-repeat center bottom;
+            }
+
+                p.browse-in-the-know a:hover {
+                    background-position: center top;
+                }
+
+        p.back-to-search-results {
+            margin: 0 0 10px 0;
+            padding: 0;
+        }
+
+            p.back-to-search-results a {
+                display: block;
+                margin: 0;
+                padding: 0;
+                width: 164px;
+                height: 52px;
+                text-indent: -9999px;
+                background: transparent url("/img/cm/css/button-back-to-search-results.png") no-repeat left bottom;
+            }
+
+                p.back-to-search-results a:hover {
+                    background-position: left top;
+                }
+
+        .results {
+            clear: both;
+            float: left;
+            margin: 0 0 1em 0;
+            padding: 0 0 1em 0;
+            width: 100%;
+            color: #333;
+        }
+
+            .results h3 {
+                clear: both;
+                margin: 0;
+                padding: 10px;
+                max-height: 2em;
+                font-weight: bold;
+                font-size: 1.25em;
+                color: #333;
+                text-shadow: #fff 0 1px 1px;
+                border: 1px solid #b0afb5;
+                background: #e8e8e8 url("/img/cm/css/background-driver-header.png") repeat-x left top;
+            }
+
+            .results p.findmore {
+                clear: both;
+                margin: 0;
+                padding: 0 0 1em 0;
+                text-align: left;
+                border-bottom: 1px solid #b0afb5;
+            }
+
+                .results p.findmore a {
+                    font-size: 1em;
+                }
+
+            .results ol {
+                clear: both;
+                float: left;
+                margin: 0 0 1em 0;
+                padding: 0;
+                list-style: none;
+                width: 100%;
+            }
+
+                .results ol li {
+                    clear: both;
+                    float: left;
+                    margin: 0;
+                    padding: 1em 0;
+                    width: 100%;
+                    border-bottom: 1px solid #b0afb5;
+                }
+
+                    .results ol li p {
+                        margin: 0 0 1.5em;
+                    }
+
+                    .results ol li ul {
+                        margin: 0 1.5em 1.5em 0;
+                        padding-left: 1.5em;
+                        list-style-type: disc;
+                    }
+
+                    .results ol li ol {
+                        margin: 0 1.5em 1.5em 0;
+                        padding-left: 1.5em;
+                        list-style-type: decimal;
+                    }
+
+                    .results ol li ul ul {
+                        margin-top: 1em;
+                        list-style: none;
+                    }
+
+                    .results ol li li {
+                        margin: 0 0 0.5em 0;
+                        padding: 0;
+                        border: none;
+                    }
+
+        .leftgutter h3 {
+            line-height: 16px;
+            clear: both;
+            float: left;
+            width: 165px;
+            margin: 0 0 0.5em 0;
+            padding: 0.5em 4px;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: #333;
+            text-shadow: #fff 0 1px 1px;
+            border: 1px solid #b0afb5;
+            background: #e8e8e8 url("/img/cm/css/background-driver-header.png") repeat-x left top;
+        }
+
+            .leftgutter h3 a {
+                text-decoration: none;
+                color: #333;
+                font-size: 1em;
+            }
+
+                .leftgutter h3 a:hover {
+                    color: #477dc5;
+                }
+
+        .leftgutter ul,
+        .leftgutter ol {
+            float: left;
+            margin: 0 0 0.5em 0;
+            padding: 0;
+            list-style: none;
+        }
+
+            .leftgutter ul li {
+                float: left;
+                margin: 0.5em 0 0 0;
+                padding: 0 0 0.5em 0;
+                border-bottom: 1px solid #b0afb5;
+                width: 175px;
+            }
+
+            .leftgutter ol li {
+                float: left;
+                margin: 0.5em 0 0 0;
+                padding: 0 0 0.5em 0;
+            }
+
+            .leftgutter ul li a {
+                display: block;
+            }
+
+        .leftgutter p.findmore {
+            margin: 0 0 0.5em 0;
+            padding: 0 0 0.5em 0;
+            text-align: left;
+            border-bottom: 1px solid #b0afb5;
+            font-size: 1em;
+        }
+
+        .leftgutter a#pm-contact-button {
+            display: block;
+            padding-right: 18px;
+            background: transparent url("/img/cm/css/icons/information.png") no-repeat right center;
+        }
+
+        .leftgutter ul#pm-contact-detail-list {
+            display: none;
+            border-bottom: 1px solid #b0afb5;
+        }
+
+            .leftgutter ul#pm-contact-detail-list li {
+                border: none;
+            }
+
+                .leftgutter ul#pm-contact-detail-list li a {
+                    display: inline;
+                }
+
+        .leftgutter ul.blog-post-list li a {
+            padding-left: 18px;
+            min-height: 18px;
+            background: transparent url("/img/cm/css/icons/page.png") no-repeat 1px 2px;
+        }
+
+            .leftgutter ul.blog-post-list li a:hover {
+                background-image: url("/img/cm/css/icons/page_go.png");
+                background-position: left 1px;
+            }
+
+        .leftgutter ul.property-list li p.avatar,
+        .leftgutter ul.pm-recent-profiles li p.avatar {
+            float: left;
+            margin: 0;
+            width: 52px;
+            height: 52px;
+        }
+
+            .leftgutter ul.property-list li p.avatar a,
+            .leftgutter ul.pm-recent-profiles li p.avatar a {
+                border: 1px solid #ddd;
+            }
+
+                .leftgutter ul.property-list li p.avatar a:hover,
+                .leftgutter ul.pm-recent-profiles li p.avatar a:hover {
+                    border: 1px solid #b0afb5;
+                }
+
+        .leftgutter ul.property-list li div,
+        .leftgutter ul.pm-recent-profiles li div {
+            float: right;
+            width: 120px;
+        }
+
+        .leftgutter ul.questions-asked-list li a {
+            padding-left: 18px;
+            background: transparent url("/img/cm/css/icons/lightbulb_off.png") no-repeat 1px 2px;
+        }
+
+            .leftgutter ul.questions-asked-list li a:hover {
+                background-position: left 1px;
+            }
+
+        .leftgutter ul.questions-answered-list li a {
+            padding-left: 18px;
+            background: transparent url("/img/cm/css/icons/lightbulb.png") no-repeat 1px 2px;
+        }
+
+            .leftgutter ul.questions-answered-list li a:hover {
+                background-position: left 1px;
+            }
+
+        .qna .results,
+        .blog .results {
+        }
+
+            .qna .results ol li.answered em a,
+            .blog .results ol li.commnented em a, /* Delete this line after someone corrects spelling in code. */
+            .blog .results ol li.commented em a {
+                background-color: #ecfbe1;
+                border: 3px solid #96d150;
+                color: #96d150;
+            }
+
+            .qna .results ol li.unanswered em a,
+            .blog .results ol li.uncommented em a {
+                background-color: #fbf4e1;
+                border: 3px solid #d18a50;
+                color: #d18a50;
+            }
+
+            .qna .results ol li.answered em a:hover,
+            .blog .results ol li.commnented em a:hover, /* Delete this line after someone corrects spelling in code. */
+            .blog .results ol li.commented em a:hover {
+                background-color: #96d150;
+                border: 3px solid #96d150;
+                color: #fff;
+            }
+
+            .qna .results ol li.unanswered em a:hover,
+            .blog .results ol li.uncommented em a:hover {
+                background-color: #d18a50;
+                border: 3px solid #d18a50;
+                color: #fff;
+            }
+
+            .qna .results ol li em a,
+            .blog .results ol li em a {
+                display: block;
+                float: left;
+                margin: 0 10px 0 0;
+                padding: 10px 0;
+                min-height: 26px;
+                width: 44px;
+                font-size: 1.5em;
+                text-decoration: none;
+                text-align: center;
+                font-style: normal;
+                font-weight: bold;
+            }
+
+                .qna .results ol li em a span,
+                .blog .results ol li em a span {
+                    display: block;
+                    font-size: 0.6em;
+                    line-height: 0.6em;
+                    font-weight: normal;
+                }
+
+            .qna .results ol li p a,
+            .blog .results ol li p a {
+                color: #333;
+                text-decoration: none;
+            }
+
+                .qna .results ol li p a.community-guidelines,
+                .blog .results ol li p a.community-guidelines {
+                    color: #5285cf;
+                }
+                /* This is kinda hacky. */
+                .qna .results ol li p a:hover,
+                .blog .results ol li p a:hover {
+                    color: #5285cf;
+                    text-decoration: underline;
+                }
+
+            .qna .results ol li ul,
+            .blog .results ol li ul {
+                clear: both;
+                float: left;
+                margin: 1em 0 0 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                .qna .results ol li ul li,
+                .blog .results ol li ul li {
+                    clear: none;
+                    float: left;
+                    margin: 0 4px 0 0;
+                    padding: 0 4px 0 0;
+                    width: auto !important;
+                    border: none;
+                    border-right: 1px solid #b0afb5;
+                }
+
+                    .qna .results ol li ul li.first,
+                    .blog .results ol li ul li.first {
+                        border: none;
+                        font-style: italic;
+                        color: #999;
+                    }
+
+            .qna .results ol li dl,
+            .blog .results ol li dl {
+                clear: both;
+                float: left;
+                width: 100%;
+                color: #999;
+            }
+
+                .qna .results ol li dl dt,
+                .blog .results ol li dl dt {
+                    font-style: italic;
+                    float: left;
+                    margin: 0 4px 0 0;
+                    padding: 0 4px 0 0;
+                }
+
+                .qna .results ol li dl dd,
+                .blog .results ol li dl dd {
+                    float: left;
+                    margin: 0 4px 0 0;
+                    padding: 0 4px 0 10px;
+                    background: transparent url("/img/cm/css/arrow-sm.png") no-repeat left 5px;
+                }
+
+                    .qna .results ol li dl dd.first,
+                    .blog .results ol li dl dd.first {
+                        padding-left: 0;
+                        background: none;
+                    }
+
+        .pmdir .results {
+        }
+
+            .pmdir .results ol li h5 {
+                margin: 0;
+                padding: 0;
+            }
+
+                .pmdir .results ol li h5 a {
+                    font-size: 2em;
+                    text-decoration: none;
+                }
+
+            .pmdir .results ol li p a {
+                color: #333;
+                text-decoration: none;
+            }
+
+                .pmdir .results ol li p a:hover {
+                    color: #5285cf;
+                    text-decoration: underline;
+                }
+
+            .pmdir .results ol li p.avatar {
+                float: left;
+                margin: 0 10px 0 0;
+                padding: 0;
+                height: 100px;
+                width: 100px;
+                overflow: hidden;
+                text-align: center;
+            }
+
+            .pmdir .results ol li div {
+                float: right;
+                width: 459px;
+                font-style: normal;
+            }
+
+            .pmdir .results ol li span {
+                float: right;
+                margin-top: -2em;
+            }
+
+                .pmdir .results ol li span a {
+                    float: left;
+                    margin: 0;
+                    padding: 0.5em;
+                    text-decoration: none;
+                    color: #fff;
+                    background-color: #477dc5;
+                    border: 1px solid #d5d5d5;
+                }
+
+                    .pmdir .results ol li span a:hover {
+                        color: #255493;
+                        background-color: #dff0fa;
+                    }
+
+        .pmdir .leftgutter .results ol li div {
+            float: right;
+            width: 100%;
+            font-style: normal;
+        }
+
+        .pmdirclaim {
+        }
+
+            .pmdirclaim .leftgutter {
+            }
+
+            .pmdirclaim .centergutter h2 {
+                margin: 0 0 1em 0;
+            }
+
+            .pmdirclaim .centergutter .pmclaim {
+                margin: 2em 0 0 0;
+                padding: 1em 0 0 0;
+                border-top: 1px solid #b0afb5;
+            }
+
+            .pmdirclaim .centergutter #agentName {
+                font-size: 1.5em;
+                font-weight: bold;
+                color: #333;
+            }
+
+        .qdetail {
+            clear: both;
+            margin: 0 0 1em 0;
+        }
+
+        ul.post-meta-data {
+            clear: both;
+            float: left;
+            margin: 0 0 1em 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+            ul.post-meta-data li {
+                clear: none;
+                float: left;
+                margin: 0 4px 0 0;
+                padding: 0 4px 0 0;
+                font-style: italic;
+                color: #999;
+                width: auto !important;
+                border: none;
+                border-right: 1px solid #b0afb5;
+            }
+
+                ul.post-meta-data li.categories {
+                    clear: both;
+                    width: 100% !important;
+                }
+
+                ul.post-meta-data li a {
+                    color: #999;
+                }
+
+                    ul.post-meta-data li a:hover {
+                        color: #477dc5;
+                    }
+
+        .pmdirdtl {
+        }
+
+            .pmdirdtl .leftgutter {
+            }
+
+            .pmdirdtl .centergutter {
+            }
+
+                .pmdirdtl .centergutter h1 {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                .pmdirdtl .centergutter p {
+                    margin: 0 0 1.5em 0;
+                }
+
+                    .pmdirdtl .centergutter p a {
+                        color: #333;
+                        text-decoration: none;
+                    }
+
+                        .pmdirdtl .centergutter p a:hover {
+                            color: #5285cf;
+                            text-decoration: underline;
+                        }
+
+                .pmdirdtl .centergutter a.button {
+                    display: block;
+                    clear: both;
+                    margin: 1em 0;
+                }
+
+                .pmdirdtl .centergutter p.avatar {
+                    float: left;
+                    margin: 0 10px 0 0;
+                    padding: 0;
+                    height: 100px;
+                    width: 100px;
+                    overflow: hidden;
+                    text-align: center;
+                }
+
+                .pmdirdtl .centergutter div {
+                    float: right;
+                    width: 459px;
+                    font-style: normal;
+                }
+
+        p.property-manager-tracking-banner {
+            clear: both;
+        }
+
+            p.property-manager-tracking-banner a {
+                margin: 10px 0 0 0;
+                padding: 0;
+                display: block;
+                width: 760px;
+                height: 66px;
+                text-indent: -9999px;
+                background: transparent url("/img/cm/css/property-manager-tracking-banners.png") no-repeat left bottom;
+            }
+
+                p.property-manager-tracking-banner a:hover {
+                    background-position: left top;
+                }
+
+        .centergutter p.property-manager-tracking-banner a {
+            width: 575px;
+            background: transparent url("/img/cm/css/property-manager-tracking-banners.png") no-repeat right bottom;
+        }
+
+            .centergutter p.property-manager-tracking-banner a:hover {
+                background-position: right top;
+            }
+
+        /* Should not have to be as specific as .centergutter */
+        .centergutter div.addthis_toolbox {
+            float: right;
+            margin: 0;
+            padding: 0;
+            width: 100px;
+        }
+
+            .centergutter div.addthis_toolbox a {
+                float: right;
+                margin: 0 0 0 4px;
+                padding: 0;
+            }
+
+        .form {
+        }
+
+            .form ol li {
+                border: none;
+            }
+
+                .form ol li .yui-editor-container {
+                    width: 567px !important;
+                    border-color: #b0afb5 !important;
+                }
+
+        /* Begin popup modal lightbox window styles */
+        /* Override main.css */ #lightbox {
+            background-color: transparent;
+        }
+
+        #authDiv {
+            width: 458px !important;
+            height: 308px !important;
+            border-color: #333 !important;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 9px;
+        }
+
+        #flagDiv {
+            width: 458px !important;
+            height: 308px !important;
+            border-color: #333 !important;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 9px;
+        }
+
+        iframe#authiframe {
+            height: 308px !important;
+        }
+
+        div.lightbox-container {
+            margin: 0 auto;
+            padding: 0;
+            width: 428px;
+            text-align: left;
+        }
+
+            div.lightbox-container ul {
+                float: left;
+                display: block;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                div.lightbox-container ul li {
+                    float: left;
+                    display: block;
+                }
+
+                    div.lightbox-container ul li#facebook-login-container {
+                    }
+
+                    div.lightbox-container ul li#rentbits-login-container {
+                    }
+
+            div.lightbox-container h2 {
+                margin: 10px 0 1em 0;
+                padding: 0;
+                font-size: 1.25em;
+                color: #333;
+                font-weight: bold;
+                line-height: 1em;
+            }
+
+                div.lightbox-container h2 a {
+                    margin: 0;
+                    padding: 0;
+                    font-size: 110%;
+                    color: #333;
+                    font-weight: normal;
+                    line-height: 1em;
+                    text-decoration: none;
+                }
+
+                    div.lightbox-container h2 a span {
+                        padding-left: 20px;
+                        font-size: 110%;
+                        color: #069;
+                        text-decoration: underline;
+                    }
+
+            div.lightbox-container ul li#facebook-login-container h2 span {
+                background: transparent url("/img/cm/css/icons-social/rentbits.png") no-repeat left 4px;
+            }
+
+            div.lightbox-container ul li#facebook-login-container p {
+                color: #666;
+                font-size: 1em;
+            }
+
+            div.lightbox-container ul li#rentbits-login-container h2 span {
+                background: transparent url("/img/cm/css/icons-social/facebook.png") no-repeat left 4px;
+            }
+
+            div.lightbox-container ul li#rentbits-login-container div#email-block {
+                float: left;
+                width: 210px;
+            }
+
+            div.lightbox-container ul li#rentbits-login-container div#display-name-block {
+                float: right;
+                width: 210px;
+            }
+
+            div.lightbox-container ul li#rentbits-login-container #recaptcha_widget_div {
+                float: left;
+                display: block;
+                margin: 0.5em 0 0 -3px;
+            }
+
+            div.lightbox-container ul li#rentbits-login-container input[type="text"] {
+                margin: 0 0 0.5em 0;
+                padding: 4px;
+                width: 200px;
+                border: 1px solid #b0afb5;
+            }
+
+            div.lightbox-container ul li#rentbits-login-container button {
+                display: block;
+                margin: 1em 0 0 0;
+                padding: 0;
+                width: 165px;
+                height: 33px;
+                text-indent: -9999px;
+                border: none;
+                background: transparent url("/img/cm/css/button-log-in.png") no-repeat center bottom;
+            }
+
+                div.lightbox-container ul li#rentbits-login-container button:hover {
+                    background-position: center top;
+                }
+
+            div.lightbox-container p {
+                font-size: 1.25em;
+                color: #333;
+            }
+
+            div.lightbox-container div.lightbox-content {
+                float: left;
+                display: block;
+                margin: 0;
+                padding: 2em 0 0 0;
+                border-top: 1px solid #b0afb5;
+            }
+
+            div.lightbox-container label {
+                font-size: 1.25em;
+                color: #333;
+            }
+
+            div.lightbox-container textarea {
+                clear: both;
+                margin: 0;
+                padding: 4px;
+                width: 418px;
+                height: 100px;
+                border: 1px solid #b0afb5;
+            }
+
+            div.lightbox-container button#cancelBtn {
+                display: block;
+                margin: 1em 10px 0 0;
+                padding: 0;
+                width: 116px;
+                height: 33px;
+                text-indent: -9999px;
+                border: none;
+                background: transparent url("/img/cm/css/button-cancel.png") no-repeat center bottom;
+            }
+
+                div.lightbox-container button#cancelBtn:hover {
+                    background-position: center top;
+                }
+
+            div.lightbox-container button#submitBtn {
+                display: block;
+                margin: 1em 0 0 0;
+                padding: 0;
+                width: 116px;
+                height: 33px;
+                text-indent: -9999px;
+                border: none;
+                background: transparent url("/img/cm/css/button-submit.png") no-repeat center bottom;
+            }
+
+                div.lightbox-container button#submitBtn:hover {
+                    background-position: center top;
+                }
+        /* End popup modal lightbox window styles */
+
+        #footer {
+            margin-top: 2em;
+            margin-bottom: 2em;
+            padding: 2em 0;
+            color: #b0afb5;
+            border-top: 1px solid #b0afb5;
+        }
+
+            #footer h2#logo-dots {
+                float: left;
+                margin: 0;
+                padding: 14px 20px 20px 20px;
+                font-size: 1em;
+            }
+
+        h2#logo-wordmark a {
+            margin: 10px 0 0 0;
+            padding: 0;
+            display: block;
+            width: 180px;
+            height: 72px;
+            text-indent: -9999px;
+            background: transparent url("/img/cm/css/logo.png") no-repeat left top;
+        }
+
+        #footer h2#logo-dots a:hover {
+            background-position: left top;
+        }
+
+        #footer #links-container {
+            float: left;
+            margin: 0;
+            padding: 0;
+            width: 860px;
+        }
+
+        #footer ul {
+            clear: both;
+            margin: 0 0 1em 0;
+            padding: 0;
+        }
+
+            #footer ul li {
+                float: left;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                #footer ul li a {
+                    margin: 0;
+                    padding: 0 10px;
+                    text-decoration: none;
+                    color: #b0afb5;
+                    border-left: 1px solid #b0afb5;
+                }
+
+                #footer ul li:first-child a,
+                #footer ul li.first a {
+                    border: none;
+                }
+
+                #footer ul li a:hover {
+                    text-decoration: underline;
+                }
+
+        ul#legal {
+            margin-top: 2em;
+            color: #b0afb5;
+        }
+
+            ul#legal li.first {
+                padding: 0 10px;
+            }
+
+        .result {
+            padding-top: 0;
+            width: auto;
+        }
+
+            .result table {
+                width: auto;
+            }
+
+            .result td.resultTd {
+                width: 760px;
+                padding-right: 10px;
+            }
+
+            .result td.googleAdsTd {
+                width: 170px;
+            }
+
+        .paging {
+            float: left;
+            margin: 0;
+            padding: 10px;
+            width: 553px;
+            font-size: 1.25em;
+            color: #333;
+            text-align: left;
+            border: 1px solid #b0afb5;
+            background: #e8e8e8 url("/img/cm/css/background-driver-header.png") repeat-x left top;
+        }
+
+            .paging button {
+                float: right;
+            }
+
+        .pagecontent {
+            width: 940px;
+        }
+
+        #page {
+            width: 940px;
+            margin: 0px auto;
+        }
+
+        div.info-block.description ul {
+            margin: 0 0 10px 0;
+        }
+
+        table.statsTable th,
+        table.schtbl th {
+            color: #000;
+        }
+
+        /* Begin based on Particletree BUTTONS CSS */
+        a.button,
+        input[type=submit],
+        button {
+            display: block;
+            float: left;
+            margin: 0 7px 0 0;
+            text-transform: uppercase;
+            text-shadow: #fff 0 1px 1px;
+            background: #ededed url("/img/cm/css/background-button-standard.png") repeat-x left bottom;
+            border: 1px solid #9c9ba0;
+            font-size: 100%;
+            line-height: 130%;
+            text-decoration: none;
+            font-weight: normal;
+            color: #666;
+            cursor: pointer;
+            padding: 5px 10px 6px 7px; /* Links */
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        button {
+            width: auto;
+            overflow: visible;
+            padding: 4px 7px 3px 7px; /* IE6 */
+        }
+
+            button[type] {
+                padding: 5px 7px 5px 7px; /* Firefox */
+                line-height: 17px; /* Safari */
+            }
+
+            *:first-child + html button[type] {
+                padding: 4px 7px 3px 7px; /* IE7 */
+            }
+
+            button img,
+            a.button img {
+                margin: 0 3px -3px 0 !important;
+                padding: 0;
+                border: none;
+                width: 16px;
+                height: 16px;
+            }
+            /* STANDARD */
+            button:hover,
+            a.button:hover {
+                background-color: #dff0fa;
+                color: #255493;
+                border: 1px solid #b0afb5;
+            }
+
+        a.button:active {
+            background-position: left top;
+        }
+        /* POSITIVE */
+        button.positive,
+        a.button.positive {
+            color: #529214;
+        }
+
+            a.button.positive:hover,
+            button.positive:hover {
+                background-color: #E6EFC2;
+                border: 1px solid #C6D880;
+                color: #529214;
+            }
+
+            a.button.positive:active {
+                background-color: #529214;
+                border: 1px solid #529214;
+                color: #fff;
+            }
+        /* NEGATIVE */
+        a.button.negative, button.negative {
+            color: #d12f19;
+        }
+
+            a.button.negative:hover,
+            button.negative:hover {
+                background: #fbe3e4;
+                border: 1px solid #fbc2c4;
+                color: #d12f19;
+            }
+
+            a.button.negative:active {
+                background-color: #d12f19;
+                border: 1px solid #d12f19;
+                color: #fff;
+            }
+        /* DISABLED */
+        button[disabled] {
+            background-image: none;
+            background-color: #eee;
+            color: #ccc;
+            border-color: #ccc;
+            text-shadow: none;
+        }
+
+            button[disabled]:hover {
+                background-color: #eee;
+                cursor: inherit;
+                text-shadow: none;
+            }
+        /* End based on Particletree BUTTONS CSS */
+    </style>
+
+    <!--[if IE]>
+    <style type="text/css">
+    /* Begin Blueprint CSS ie.css */
+    /* ie.css */
+    body {text-align:center;}
+    .container {text-align:left;}
+    img {-ms-interpolation-mode:bicubic;}
+    .clearfix, .container {display:inline-block;}
+    * html .clearfix, * html .container {height:1%;}
+    fieldset {padding-top:0;}
+    legend {margin-top:-0.2em;margin-bottom:1em;margin-left:-0.5em;}
+    /* End Blueprint CSS ie.css */
+    </style>
+    <![endif]-->
+</head>
+
+<body>
+    <center>
+
+
+
+
+
+
+        <div id="fb-root"></div>
+        <script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=188092444467";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+        <script type="text/javascript">
+$(document).ready(function(){
+  var about_paths_requiring_submenus = [ "/rb/page/about-us.html", "/rb/page/analysis.html", "/rb/page/careers.html", "/rb/page/demographic.html", "/rb/page/industry-data.html", "/rb/page/introduction.html", "/rb/page/management.html", "/rb/page/newsroom.html", "/rb/page/references.html", "/rb/page/survey-results.html", "/rb/page/tenants.html" ];
+  var contact_paths_requiring_submenus = [ "/rb/page/contact-us.html", "/rb/page/faq.html" ];
+  if ( jQuery.inArray(location.pathname, about_paths_requiring_submenus) > -1 ){ $("#about-sbmn").show(); }
+  if ( jQuery.inArray(location.pathname, contact_paths_requiring_submenus) > -1 ){ $("#contact-sbmn").show(); }
+})
+
+function menuSelected()
+{
+  var winloc = window.location.href;
+  var lSelMenu = '';
+  var lMenu = document.getElementById('mm');
+  var lLinks = lMenu.getElementsByTagName('A');
+  var tmp = '';
+       if ( (winloc.search("/qna/")!=-1) || (winloc.search("/q/")!=-1) ) tmp = '/q/';
+  else if ( (winloc.search("/pm/")!=-1) || (winloc.search("/p/")!=-1) ) tmp = '/p/';
+  else if ( (winloc.search("/blog/")!=-1) || (winloc.search("/b/")!=-1) ) tmp = '/b/';
+  else if ( (winloc.search("/page/advertise-with-us.html")!=-1) || (winloc.search("/page/advertise-houses.html")!=-1) || (winloc.search("/page/advertise-apartments.html")!=-1) ) tmp = '/page/';
+  else if ( (winloc.search("/rate")!=-1) || (winloc.search("/t/")!=-1) ) tmp = '/t/';
+  else if ( (winloc.search("/s/search-rentals")!=-1) || (winloc.search("/s/find-rentals")!=-1) ) tmp = '/s/';
+  else tmp = '';
+  for (var i = 0; tmp!='' && i < lLinks.length; i++)
+  {
+    var lLink = lLinks[i];
+    if (lLink.href.search(tmp)!=-1)
+    {
+      lLink.parentNode.className = 'sel';
+      lSelMenu = tmp;
+    }
+  }
+}
+function submitform_header()
+{
+  var loc = document.getElementById('locationTxt').value;
+  var lsf = document.forms[0];
+
+  if(lsf){
+    lsf.location.value = loc;
+    lsf.submit();
+  }
+  return true;
+}
+        </script>
+
+        <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+        <div id="header" class="container">
+            <h2 id="logo-wordmark"><a href="http://rentbits.com/rb/s/find-rentals">rentbits.com Rental Property Search</a></h2>
+            <ul class="tpmenu"></ul>
+            <ul id="mm" class="tabs">
+                <li><a href="/rb/t/rental-rates/" alt="Rental Rates"><span>Rental Rates</span></a></li>
+                <li><a href="/rb/s/find-rentals" alt="Search Rentals"><span>Search Rentals</span></a></li>
+                <li id="rentals"><a href="https://pro.rentbits.io/#!/pricing" alt="Post a Rental"><span>Post a Rental</span></a></li>
+            </ul>
+        </div>
+
+        <div id="post-header" class="container">
+            <ul id="about-sbmn" class="sbmn" style="display:none;">
+                <li><a href="http://rentbits.com/rb/site/about.jsp">About Us</a></li>
+                <li><a href="http://rentbits.com/rb/site/press.jsp">News Room</a></li>
+                <li><a href="/rb/page/industry-data.html">Industry Data</a></li>
+            </ul>
+            <ul id="contact-sbmn" class="sbmn" style="display:none;">
+                <li><a href="/rb/page/faq.html">FAQ</a></li>
+
+            </ul>
+        </div>
+
+        <script type="text/javascript">menuSelected();</script>
+
+        <!--
+         ~ Copyright (C) 2014-2015 Media.net Advertising FZ-LLC All Rights Reserved
+         -->
+        <script type="text/javascript">
+    window._mNHandle = window._mNHandle || {};
+    window._mNHandle.queue = window._mNHandle.queue || [];
+    medianet_versionId = "121199";
+    medianet_chnm="Desktop";
+    medianet_chnm2="bing";
+    (function() {
+        var sct = document.createElement("script"),
+        sctHl = document.getElementsByTagName("script")[0],
+        isSSL = 'https:' == document.location.protocol;
+        sct.type = "text/javascript";
+        sct.src = (isSSL ? 'https:' : 'http:') + '//contextual.media.net/dmedianet.js?cid=8CU7KB4FS' + (isSSL ? '&https=1' : '')+'';
+        sct.async = "async";
+        sctHl.parentNode.insertBefore(sct, sctHl);
+    })();
+        </script>
+
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-3778258604496053",
+          enable_page_level_ads: true
+     });
+        </script>
+        <script>
+
+window.google_analytics_uacct="UA-46454429-1";
+google_analytics_domain_name="rentbits.com";
+        </script>
+
+        <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46454429-1', 'rentbits.com');
+  ga('send', 'pageview');
+
+        </script>
+        <script type="text/javascript">
+  !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.0.1";
+  analytics.load("LPfCvTHZUT87P0Tp2dECqxeDZnkYb41N");
+  analytics.page()
+  }}();
+        </script>
+
+
+        <div class="pagecontent">
+            <div class="result">
+                <table cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="resultTd">
+
+
+
+
+
+
+
+
+                            <style type="text/css">
+                                div.qsloc {
+                                    height: 36px;
+                                    border-left: 1px solid #c5c9cd;
+                                    border-right: 1px solid #c5c9cd;
+                                    background: url(/img/cm/results/quicksearch_bg.jpg) repeat-x;
+                                }
+
+                                    div.qsloc td.qslabel {
+                                        margin-left: 3px;
+                                        padding-left: 3px;
+                                        padding-right: 10px;
+                                        text-align: left;
+                                        font-size: 70%;
+                                    }
+
+                                    div.qsloc td.qsinput input {
+                                        text-align: left;
+                                    }
+
+                                    div.qsloc table.qsloctbl {
+                                        height: 36px;
+                                        width: 150px;
+                                        vertical-align: top;
+                                        text-align: left;
+                                        border: 1px solid red;
+                                    }
+
+                                div.result td.qsloctd {
+                                    padding-right: 0px;
+                                }
+
+                                div.result tr.qsloctr {
+                                    padding-right: 0px;
+                                }
+
+                                table.qsloctbl {
+                                    width: 100px;
+                                    border: 5px solid red;
+                                }
+
+                                td.trlabel1 {
+                                    font-weight: bold;
+                                    margin-left: 3px;
+                                    padding-left: 3px;
+                                    padding-top: 3px;
+                                    padding-right: 3px;
+                                    padding-bottom: 3px;
+                                    text-align: left;
+                                    font-size: 75%;
+                                }
+
+                                th.trlabel1 {
+                                    font-weight: bold;
+                                    text-align: center;
+                                    font-size: 75%;
+                                    background: url(/img/cm/results/blue_grey_bg.jpg) repeat-x;
+                                }
+
+                                div.trnotice {
+                                    height: 30px;
+                                    padding-top: 20px;
+                                    font-weight: bold;
+                                    text-align: center;
+                                    position: relative;
+                                    width: 50%;
+                                    left: 25%;
+                                }
+
+                                div.trcontainer {
+                                    width: 90%;
+                                    position: relative;
+                                    left: 5%;
+                                    overflow: hidden;
+                                    margin-bottom: 25px;
+                                    border-top: 1px solid #c5c9cd;
+                                    border-right: 1px solid #c5c9cd;
+                                }
+
+                                div.trcontent {
+                                    border-bottom: 1px solid #c5c9cd;
+                                    border-left: 1px solid #c5c9cd;
+                                    border-right: 1px solid #c5c9cd;
+                                    padding: 0px;
+                                    width: 100%;
+                                }
+
+                                div.trtext {
+                                    text-align: center;
+                                }
+
+                                div.trhdr {
+                                    height: 35px;
+                                    text-align: center;
+                                    vertical-align: middle;
+                                    font-weight: bold;
+                                    border-left: 1px solid #c5c9cd;
+                                    border-right: 1px solid #c5c9cd;
+                                    background: url(/img/cm/results/quicksearch_bg.jpg) repeat-x;
+                                }
+
+                                table.statsTable {
+                                    width: 100%;
+                                    table-layout: fixed;
+                                    border-bottom: 1px solid #CCCCCC;
+                                    border-collapse: collapse;
+                                    font-size: 15px;
+                                }
+
+                                div.trcontainer2 {
+                                    width: 90%;
+                                    position: relative;
+                                    left: 5%;
+                                    margin-bottom: 20px;
+                                    border-top: 1px solid #c5c9cd;
+                                }
+
+                                div.trcontent2 {
+                                    overflow-x: auto;
+                                    overflow-y: hidden;
+                                    border-bottom: 1px solid #c5c9cd;
+                                    border-left: 1px solid #c5c9cd;
+                                    border-right: 1px solid #c5c9cd;
+                                    padding: 5px 0px 10px 0px;
+                                }
+
+                                img.trarrowpic {
+                                    vertical-align: middle;
+                                }
+
+                                td.tradtd {
+                                }
+
+                                div.trad {
+                                    border: 1px solid #c5c9cd;
+                                    width: 115px;
+                                    font-size: 10px;
+                                    position: relative;
+                                    left: 5%;
+                                }
+
+                                div.trpicdiv {
+                                    width: 90%;
+                                    text-decoration: underline;
+                                    overflow: hidden;
+                                    position: relative;
+                                    left: 5%;
+                                }
+
+                                img.trpic {
+                                    height: 70px;
+                                    width: 100px;
+                                    float: center;
+                                    cursor: pointer;
+                                    margin: 2px 0;
+                                    padding: 1px;
+                                }
+
+                                div.tradlink {
+                                    cursor: pointer;
+                                    color: blue;
+                                    text-decoration: underline;
+                                    width: 110px;
+                                    overflow: hidden;
+                                    font-size: 11px;
+                                    margin-left: 5px;
+                                }
+
+                                td.trpnl {
+                                    left: 1px;
+                                    vertical-align: middle;
+                                    padding-right: 15px;
+                                }
+
+                                td.trpnr {
+                                    right: 1px;
+                                    vertical-align: middle;
+                                    padding-left: 15px;
+                                }
+
+                                div.tradheader1 {
+                                    font-size: 11px;
+                                    font-weight: bold;
+                                    margin-left: 5px;
+                                }
+
+                                div.tradheader2 {
+                                    font-size: 11px;
+                                    margin-left: 5px;
+                                }
+
+                                thead.trtblhdr {
+                                    background-color: #EEF7DB;
+                                }
+
+                                div.qs td.qslabel1 {
+                                    text-align: left;
+                                    margin-left: 2px;
+                                    margin-top: 3px;
+                                    padding-top: 3px;
+                                    font-size: 90%;
+                                    font-weight: 600;
+                                }
+
+                                div.qs td.qslabel2 {
+                                    text-align: left;
+                                    font-size: 90%;
+                                }
+
+                                div.qs td.qsbox {
+                                    margin-left: 10px;
+                                }
+
+                                td.advsrchTd {
+                                    border-right: 5px solid #c5c9cd;
+                                }
+
+                                div.qs div.borderdiv {
+                                    margin-left: 1px;
+                                    margin-right: 7px;
+                                    border-bottom: 1px solid #c5c9cd;
+                                    height: 10px;
+                                }
+
+                                div.qs div.citylink {
+                                    margin-left: 6px;
+                                    padding-left: 6px;
+                                    padding-top: 2px;
+                                }
+
+                                div.qs span.qssearch {
+                                    position: relative;
+                                    top: -20px;
+                                }
+
+                                div.qs table.main {
+                                    height: 600px;
+                                    width: 170px;
+                                    vertical-align: top;
+                                    text-align: left;
+                                }
+
+                                div.qs td.search {
+                                    style ="font-size:11px; padding-left: 5px; width: 50px;} div.qs td.qsinput input
+
+                                {
+                                    text-align: left;
+                                }
+
+                                div.qs td.qsinput select {
+                                    text-align: left;
+                                }
+
+                                div.qs td.qsinput button {
+                                    margin-left: 15px;
+                                    height: 25px;
+                                    width: 70px;
+                                }
+
+                                div.qs .provider {
+                                    font-size: 70%;
+                                    color: #ccc;
+                                    font-style: italic;
+                                }
+
+                                div.qs .headline {
+                                    font-size: 90%;
+                                    color: #216db5;
+                                    font-weight: normal;
+                                    margin-bottom: 2px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+
+                                div.qs .detail {
+                                    font-size: 80%;
+                                    text-align: left;
+                                    overflow: hidden;
+                                }
+
+                                div.trborderdiv {
+                                    margin-left: 1px;
+                                    margin-right: 7px;
+                                    border-bottom: 2px solid #c5c9cd;
+                                    height: 10px;
+                                }
+                            </style>
+
+                            <script type="text/javascript">
+var defImg = new Image();
+defImg.src = "/img/cm/results/noimage.jpg";
+var locHelp = "City, State or ZIP";
+
+function rdi(img)
+{
+  if (img.src != defImg.src)
+    img.src = defImg.src;
+}
+function sdtl(aid,pn,pp,pri)
+{
+  var url = '/rb/s/redirect;jsessionid=B6191E8A72FF692A883C3C188C275FD6' + '?a=' + aid + '&pn=' + pn + '&pp=' + pp + '&pri=' + pri;
+  var lWin = window.open(url,aid);
+  lWin.focus();
+}
+
+function getbeds()
+{
+  var bedstring = "";
+  if (document.getElementById('bedsButton0').checked)
+  	bedstring += "all,";
+  if (document.getElementById('bedsButton1').checked)
+    bedstring += "1,";
+  if (document.getElementById('bedsButton2').checked)
+  	bedstring += "2,";
+  if (document.getElementById('bedsButton3').checked)
+  	bedstring += "3%2B";
+
+  return bedstring;
+}
+
+function getbedsforsearch()
+{
+  var bedstring = "";
+  if (document.getElementById('bedsButton0').checked)
+  	return bedstring;
+
+  if (document.getElementById('bedsButton1').checked)
+    bedstring += "&beds=1";
+  if (document.getElementById('bedsButton2').checked)
+  	bedstring += "&beds=2";
+  if (document.getElementById('bedsButton3').checked)
+  	bedstring += "&beds=3%2B";
+
+  return bedstring;
+}
+
+function clearsearch()
+{
+  document.getElementById('bedsButton0').checked = true;
+  document.getElementById('bedsButton1').checked = false;
+  document.getElementById('bedsButton2').checked = false;
+  document.getElementById('bedsButton3').checked = false;
+  document.getElementById('typeSelect').selectedIndex = 0;
+
+}
+
+function getApp(appName)
+{
+   if (navigator.appName.indexOf ("Microsoft") !=-1) {
+      return window[appName];
+   }
+   else {
+      return document[appName];
+   }
+}
+
+
+function rbeds()
+{
+   var chartid = getApp("rentbits_chart_avgprice");
+
+   if (chartid != null)
+   	 chartid.refresh("bd", getbeds());
+
+   getsamples(0);
+}
+
+function get_chart1()
+{
+   var loc = document.getElementById('locationTxt');
+   var type = document.getElementById('typeSelect');
+   var beds = getbeds();
+
+   if (trim(loc.value)=='')
+   {
+     return;
+   }
+
+   var url = "/img/cm/results/rentbits_chart_avgprice.swf?loc=" + loc.value + "&type=" + type.value;
+
+   if (beds != "")
+      url += ("&bd=" + beds);
+
+   var so = new SWFObject(url, "rentbits_chart_avgprice", "100%", "345", "9.0.0", "#ffffff");
+   // so.addParam("scale", "noscale");
+   so.write("chart1");
+}
+
+function getpage(delta)
+{
+  if (delta == 0)
+   	return "";
+
+  var tf = document.getElementById('trendform');
+  var newPage = parseInt(tf.cpn.value) + parseInt(delta);
+  tf.cpn.value = newPage;
+
+  return "&pageNo=" + newPage;
+
+}
+
+function getstats(page)
+{
+    var loc = document.getElementById('locationTxt');
+    var type = document.getElementById('typeSelect');
+    var beds = getbeds();
+
+    var url = '/rb/rate/stats.do;jsessionid=B6191E8A72FF692A883C3C188C275FD6'
+    	+ '?location=' + loc.value
+    	+ '&type=' + type.value
+    	+ getpage(page);
+
+    doAjaxGet(url, displayStats);
+}
+
+function getsamples(page)
+{
+    var loc = document.getElementById('locationTxt');
+    var type = document.getElementById('typeSelect');
+    var beds = getbeds();
+
+    var url = '/rb/rate/samples.do;jsessionid=B6191E8A72FF692A883C3C188C275FD6'
+    	+ '?location=' + loc.value
+    	+ '&type=' + type.value
+    	+ getbedsforsearch()
+    	+ getpage(page);
+
+    doAjaxGet(url, displayResult);
+}
+
+function displayStats(response)
+{
+	var lDiv = document.getElementById('statsDiv');
+	lDiv.innerHTML = response;
+	getsamples(0);
+}
+
+function displayResult(response)
+{
+	var lDiv = document.getElementById('sampleAdsDiv');
+	lDiv.innerHTML = response;
+}
+
+function set_location()
+{
+   var loc = document.getElementById('locationTxt');
+   if (loc.value == '')
+      loc.value = "20171";
+}
+
+function set_link()
+{
+   if(typeof set_rental_link == 'function') {
+      set_rental_link();
+   }
+}
+
+function clearsearch()
+{
+  document.getElementById('locationTxt').value = locHelp;
+  document.getElementById('typeSelect').selectedIndex = 0;
+  document.getElementById('bedsButton0').checked = true;
+  document.getElementById('bedsButton1').checked = true;
+  document.getElementById('bedsButton2').checked = true;
+  document.getElementById('bedsButton3').checked = true;
+}
+
+function checkloc(form)
+{
+  if ((trim(form.location.value) == locHelp) || (trim(form.location.value) == ''))
+  	 return false;
+  return true;
+}
+
+                            </script>
+
+
+                            <style>
+                                div.spnsad {
+                                    background: url(/img/cm/results/sponsored_bg.jpg) bottom left repeat-x;
+                                }
+
+                                div.spnstitle {
+                                    border-bottom: 1px solid #d7d7d7;
+                                    height: 15px;
+                                    vertical-align: top;
+                                    padding: 10px 0 10px 0;
+                                }
+
+                                #sortbyselect {
+                                    float: left;
+                                    margin: 1px 0 0 5px;
+                                }
+
+                                div.ad .headline {
+                                    color: #0058C5;
+                                    font-size: 15px;
+                                }
+
+                                div.ad .desc {
+                                    vertical-align: top;
+                                    font-size: 11px;
+                                    line-height: 16px;
+                                    text-align: left;
+                                    width: none;
+                                }
+
+                                div.ad .price {
+                                    font-size: 17px;
+                                    color: black;
+                                    text-align: right;
+                                    width: 200px;
+                                }
+
+                                div.ad td.pic {
+                                    width: 116px;
+                                    cursor: pointer;
+                                }
+
+                                div.ad td.detail {
+                                    font-size: 11px;
+                                }
+
+                                div.ad .community {
+                                }
+
+                                div.ad .provider {
+                                    font-size: 11px;
+                                }
+
+                                .qsinput {
+                                    padding-right: 10px;
+                                }
+
+                                .paging {
+                                    margin: 5px 0 5px 0;
+                                    padding: 5px 5px 5px 0;
+                                    background: #FFFFFF url(/img/cm/results/results_bg.jpg) repeat-x scroll left bottom;
+                                }
+
+                                div.ad {
+                                    padding: 5px 0 8px 0;
+                                    background: url(/img/cm/results/results_bg2.jpg) repeat-x 0 98%;
+                                }
+
+                                div#paidads {
+                                    background: url(/img/cm/results/results_bg2.jpg) repeat-x 0 98%;
+                                }
+
+                                div.result td.resultTd {
+                                    vertical-align: top;
+                                    padding-right: 0px;
+                                    margin-right: 0px;
+                                }
+
+                                div.result td.googleAdsTd {
+                                    width: 172px;
+                                    padding: 2px 4px 0px 0px;
+                                }
+
+                                button {
+                                    margin-left: 3px;
+                                }
+
+                                    button[disabled] {
+                                        color: #aaa;
+                                        border: 2px solid #aaa;
+                                    }
+
+                                .beds {
+                                    text-align: left;
+                                    width: 230px;
+                                    padding: 8px 10px 0 7px;
+                                    color: #000;
+                                }
+
+                                div.moad {
+                                    background: url(/img/cm/results/results_bg_h.jpg) repeat-x bottom left #fff8f3;
+                                    border: 1px solid #ffe0ca;
+                                }
+
+                                div.ad .provider {
+                                    color: #888;
+                                    margin: 3px 0 3px 0;
+                                }
+
+                                div.qs table.advtbl {
+                                    height: 71px;
+                                }
+
+                                div.qs tr.advtr {
+                                    height: 60px;
+                                    width: 800px;
+                                }
+
+                                div.ad .price, .amens {
+                                    border-left: none;
+                                }
+
+                                .allres {
+                                    background: #FFFFFF url(/img/cm/results/quicksearch_bg2.jpg) no-repeat top right;
+                                }
+
+                                div.qsloc {
+                                    border-right: 0px solid #000;
+                                }
+
+                                .vcad {
+                                    border: 1px solid #C5C9CD;
+                                    height: 100%;
+                                    width: 90%;
+                                }
+
+                                .provider {
+                                    font-size: 90%;
+                                    color: #ccc;
+                                    font-style: italic;
+                                }
+
+                                .headline {
+                                    font-size: 110%;
+                                    color: #216db5;
+                                    font-weight: normal;
+                                    margin-bottom: 2px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+
+                                .detail {
+                                    font-size: 95%;
+                                    text-align: left;
+                                    padding: 0;
+                                }
+
+                                .vcprovider {
+                                    font-size: 90%;
+                                    color: #ccc;
+                                    font-style: italic;
+                                }
+
+                                .vcheadline {
+                                    font-size: 110%;
+                                    color: #216db5;
+                                    font-weight: normal;
+                                    margin-bottom: 2px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+
+                                .vcdetail {
+                                    font-size: 95%;
+                                    text-align: left;
+                                    padding: 0;
+                                }
+
+                                td.vcpic {
+                                    width: 116px;
+                                    cursor: pointer;
+                                }
+
+                                img.vcpic {
+                                    width: 96px;
+                                    height: 75px;
+                                    margin: 6px 4px;
+                                    float: none;
+                                    cursor: pointer;
+                                }
+
+
+                                div.qs div.lvcad {
+                                    width: 150px;
+                                }
+
+                                div.qs table.lvcad {
+                                    width: 150px;
+                                }
+
+                                div.qs .provider {
+                                    font-size: 70%;
+                                    color: #ccc;
+                                    font-style: italic;
+                                }
+
+                                div.qs .headline {
+                                    font-size: 90%;
+                                    color: #216db5;
+                                    font-weight: normal;
+                                    margin-bottom: 2px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+
+                                div.qs .detail {
+                                    font-size: 80%;
+                                    text-align: left;
+                                    overflow: hidden;
+                                    padding: 0;
+                                }
+
+                                div.qs img.pic {
+                                    width: 96px;
+                                    height: 75px;
+                                    margin: 6px 4px;
+                                    float: none;
+                                    cursor: pointer;
+                                    left: 27px;
+                                }
+
+                                div.qs td.pic {
+                                    width: 150px;
+                                }
+
+                                div.qs .lvcprovider {
+                                    font-size: 70%;
+                                    color: #ccc;
+                                    font-style: italic;
+                                }
+
+                                div.qs .lvcheadline {
+                                    font-size: 90%;
+                                    color: #216db5;
+                                    font-weight: normal;
+                                    margin-bottom: 2px;
+                                    text-decoration: underline;
+                                    cursor: pointer;
+                                }
+
+                                div.qs .lvcdetail {
+                                    font-size: 80%;
+                                    text-align: left;
+                                    overflow: hidden;
+                                    padding: 0;
+                                }
+
+                                div.qs img.lvcpic {
+                                    width: 96px;
+                                    height: 75px;
+                                    margin: 6px 4px;
+                                    float: none;
+                                    cursor: pointer;
+                                    left: 27px;
+                                }
+
+                                div.qs td.lvcpic {
+                                    width: 150px;
+                                }
+
+                                div.qs span.lvcadtitle {
+                                    font-size: 80%;
+                                    color: #ccc;
+                                }
+
+
+                                td.advsrchTd {
+                                    border-right: 2px solid #c9c5cd;
+                                }
+
+                                .listTd {
+                                    border-right: 2px solid #C5C9CD;
+                                    padding-right: 2px;
+                                    width: auto;
+                                }
+
+                                div.qs table.main {
+                                    margin-left: 6px;
+                                }
+
+                                .citylist a:link {
+                                    color: #a71616;
+                                    text-decoration: none;
+                                }
+
+                                .citylist a:visited {
+                                    color: #a71616;
+                                    text-decoration: none;
+                                }
+
+                                .citylist a:hover {
+                                    color: #a71616;
+                                    text-decoration: none;
+                                }
+
+                                div.qs div.borderdiv {
+                                    border-bottom: 1px dotted #bbb;
+                                }
+
+                                div.qs table.main td.qslabel1 {
+                                    padding: 10px 0 6px 0;
+                                }
+
+                                div.qs table.main td {
+                                    padding: 2px 0 2px 0;
+                                }
+
+                                div.vcseparator {
+                                    border-bottom: none;
+                                }
+
+                                div.h1regiondiv {
+                                    padding-left: 30px;
+                                    margin-top: 0px;
+                                    margin-bottom: -20px;
+                                }
+
+                                    div.h1regiondiv h1 {
+                                        font-size: 18px;
+                                    }
+                            </style>
+                            <script type="text/javascript">
+
+var lHelpEvent;
+
+function showHelp(pEvent,id)
+{
+  lHelpEvent = pEvent;
+  var lDiv = document.getElementById('helpDiv'+id);
+
+  if ((lDiv != null) && (lDiv.style.display != 'block'))
+  {
+     if (id == 1)
+     {
+        if (navigator.appName.indexOf ("Microsoft") !=-1)
+        {
+           fixDivPos(lDiv, -20, -700, pEvent);
+        }
+        else
+        {
+           fixDivPos(lDiv, -20, -200, pEvent);
+        }
+     }
+
+     if (id == 2)
+     {
+        fixDivPos(lDiv, -20, -20, pEvent);
+     }
+
+     lDiv.style.display = "block";
+  }
+  else if (lDiv != null)
+     lDiv.style.display = "none";
+}
+
+
+
+function hideHelp(id)
+{
+  document.getElementById('helpDiv'+id).style.display = "none";
+}
+
+                            </script>
+
+
+                            <div class="trends">
+
+                                <table style="width: 100%;">
+                                    <tr>
+                                        <td class="leftgutter">
+
+                                            <form name="trendForm" method="get" action="/rb/rates.do;jsessionid=B6191E8A72FF692A883C3C188C275FD6" onsubmit="return checkloc(this);" id="trendform">
+
+
+
+
+
+
+                                                <div class="qs">
+                                                    <input type="hidden" name="rid" value="">
+                                                    <input type="hidden" name="city" value="HERNDON" />
+                                                    <input type="hidden" name="state" value="VA" />
+                                                    <input type="hidden" name="pageNo" value="0" />
+                                                    <input type="hidden" name="cpn" value="0" />
+                                                    <table cellspacing="0" cellpadding="0" class="main">
+                                                        <tbody>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div style="margin-bottom: 20px;">
+                                                                        <a href="/rb/t/browse;jsessionid=B6191E8A72FF692A883C3C188C275FD6" class="button">Browse Rental Rates</a>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td class="qslabel1">
+                                                                    <span style="margin-left:5px;">Location</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="qsinput">
+                                                                    <input type="text" name="location" value="20171" onblur="if(this.value==''){this.value=locHelp;}" onfocus="if(this.value==locHelp){this.value='';}" style="width:150px;" id="locationTxt">
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td align="center">
+                                                                    <button type="submit">Search</button>
+                                                                    <button type="button" onclick="clearsearch()">Clear</button>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr><td><div class="borderdiv"></div></td></tr>
+
+                                                            <tr>
+                                                                <td class="qslabel1"><span style="margin-left: 1px;margin-top:1px; padding-left: 1px; ">Type</span> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="qsinput">
+                                                                    <select name="type" onchange="this.form.submit();" style="width:100px;" id="typeSelect">
+                                                                        <option value="A">Apartment</option>
+                                                                        <option value="H" selected="selected">House</option>
+                                                                        <option value="CTD">Other</option>
+                                                                    </select>
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr><td><div class="borderdiv"></div></td></tr>
+
+                                                            <tr>
+                                                                <td class="qslabel1"><span style="margin-left: 0px;margin-top:15px; padding-left: 0px; border-left: 1px;">Bedrooms</span> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="qslabel2">
+                                                                    <span style="right: 2px; margin-left: 2px;margin-top:1px; padding-left: 1px; "></span>
+                                                                    <input type="checkbox" name="beds" value="all" checked="checked" onclick="rbeds()" style="qsbox" id="bedsButton0">All
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="qslabel2">
+                                                                    <span style="right: 2px; margin-left: 2px;margin-top:1px; padding-left: 1px; "></span>
+                                                                    <input type="checkbox" name="beds" value="1" onclick="rbeds()" style="qsbox" id="bedsButton1">1 bedroom
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="qslabel2">
+                                                                    <span style="right: 2px; margin-left: 2px;margin-top:1px; padding-left: 1px; "></span>
+                                                                    <input type="checkbox" name="beds" value="2" onclick="rbeds()" style="qsbox" id="bedsButton2">2 bedrooms
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="qslabel2">
+                                                                    <span style="right: 2px; margin-left: 2px;margin-top:1px; padding-left: 1px; "></span>
+                                                                    <input type="checkbox" name="beds" value="3+" onclick="rbeds()" style="qsbox" id="bedsButton3">3+ bedrooms
+                                                                </td>
+                                                            </tr>
+
+                                                            <tr><td><span class="borderspan"></span></td></tr>
+
+                                                            <tr><td><div class="borderdiv"></div></td></tr>
+
+                                                            <tr>
+                                                                <td class="qslabel1" style="padding-bottom: 2px;">Cities within 10 miles</td>
+                                                            </tr>
+
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/ashburn-virginia">Ashburn</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/mc_lean-virginia">Mc Lean</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/potomac-maryland">Potomac</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/reston-virginia">Reston</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/fairfax-virginia">Fairfax</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/chantilly-virginia">Chantilly</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/vienna-virginia">Vienna</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/centreville-virginia">Centreville</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/sterling-virginia">Sterling</a></div></td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td><div class="citylink"><a href="/rb/t/rental-rates/houses/burke-virginia">Burke</a></div></td>
+                                                            </tr>
+
+
+                                                            <tr><td><div class="borderdiv"></div></td></tr>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="leftads" id="divleftadsid">
+
+                                                                    </div>
+                                                                </td>
+
+                                                            </tr>
+
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </form>
+
+                                        </td>
+                                        <td class="centergutter">
+
+                                            <div class="h1regiondiv">
+                                                <h1> Rental Rates in 20171</h1>
+                                                Search rental rates, prices, stats, statistics for homes, condos, townhouses and apartments in
+                                                20171 for free. Fast, easy price search.<br><br><br>
+                                            </div>
+                                            <script id="mNCC" language="javascript">  medianet_width='728';  medianet_height= '90';  medianet_crid='411753856';  </script>
+                                            <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU7KB4FS" language="javascript"></script>
+
+
+
+                                            <div id="helpDiv1" style="z-index: 1; background-color: #f8ce5b; border: 1px #999 solid; width: 300px; padding: 4px; position: absolute; top: 0; left: 0; display: none;">
+
+                                                <div onclick="hideHelp(1);">
+
+                                                    Average Rental Rates are calculated by evaluating rental listings advertised on www.rentbits.com that were removed during the month noted.
+                                                    <br /><br />
+                                                    The average is calculated as:  Sum Price / Number of listings
+                                                    <br /><br />
+                                                </div>
+                                                <div style="text-align: center; background-color: #ddd; padding-bottom: 4px; cursor: pointer;" onclick="hideHelp(1)">[Close]</div>
+                                            </div>
+
+                                            <div id="helpDiv2" style="z-index: 1; background-color: #f8ce5b; border: 1px #999 solid; width: 300px; padding: 4px; position: absolute; top: 0; left: 0; display: none;">
+
+                                                <div>
+
+                                                    <table onclick="hideHelp(2);">
+                                                        <tr>
+                                                            <td><b>Median Price:</b></td>
+                                                            <td>
+                                                                The median price is the price at which half of the units are above that price,
+                                                                and the other half are below that price.
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><b>Average Price:</b></td>
+                                                            <td>
+                                                                The average price is calculated as the sum price of all currently available
+                                                                listings divided by the number of listings for a given type and # of bedrooms
+                                                            <td>
+                                                        </tr>
+
+                                                    </table>
+                                                </div>
+
+                                                <div style="text-align: center; background-color: #ddd; padding-bottom: 4px; cursor: pointer;" onclick="hideHelp(2)">[Close]</div>
+                                            </div>
+
+
+                                            <table cellpadding="0" cellspacing="0" style="width: 100%;">
+                                                <tr>
+                                                    <td style="width: 100%; padding: 25px 0px 0px 0px; text-align:left;">
+                                                        <div class="trcontainer2">
+                                                            <div class="trhdr"><div class="ratesTitle">Average Rental Rates <span class="ratesTitle2">| Last 12 Months</span></div></div>
+                                                            <div id="chart1" style="width: 100%;">
+                                                                <div id="noflash_chart1">
+                                                                    <table style="width:100%; height: 100%;">
+                                                                        <tr>
+                                                                            <td style="text-align:center; vertical-align:top;">
+                                                                                <a href="http://www.adobe.com/go/getflashplayer">
+                                                                                    <img class="farside" style="margin:5px 0px 15px 20px;" src="http://www.adobe.com/images/shared/download_buttons/get_adobe_flash_player.png" alt="Adobe Flash Player Download Center" title="Adobe Flash Player Download Center" />
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </td>
+                                                </tr>
+
+                                                <tr><td><div class="trborderdiv">&nbsp;</div></td></tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="trcontainer">
+                                                            <div class="trhdr"><div class="ratesTitle">Current Rental Rates<span class="ratesTitle2"> | available listings</span></div>&nbsp;</div>
+                                                            <div class="trcontent" id="statsDiv">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                <tr><td><div class="trborderdiv">&nbsp;</div></td></tr>
+
+                                                <tr>
+                                                    <td>
+
+                                                        <div class="trcontainer2">
+                                                            <div class="trhdr"><div class="ratesTitle">Rental Listings</div></div>
+                                                            <div class="trcontent2" id="sampleAdsDiv">
+
+                                                            </div>
+
+                                                            <div class="trnotice"><a href="/rb/search.do?location=20171&types=H">View All Listings in 20171</a></div>
+
+                                                        </div>
+
+
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <script type="text/javascript">set_link();set_location();get_chart1(); getstats(0);</script>
+
+
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </td>
+                        <td class="googleAdsTd">
+                        <script id="mNCC" language="javascript">  medianet_width='300';  medianet_height= '600';  medianet_crid='146438085';  </script>
+                        <script id="mNSC" src="http://contextual.media.net/nmedianet.js?cid=8CU7KB4FS" language="javascript"></script> </td>
+                    </tr>
+                </table>
+            </div>
+
+
+
+            <div class="footer">
+                <div id="footer" class="container">
+
+                    <div id="links-container">
+                        <ul class="clear clearfix"></ul>
+                        <ul id="legal" class="clear clearfix">
+                            <li class="first">&copy;2017 Dash Local LLC. All Rights Reserved.</li>
+                            <li><a href="/rb/page/terms-of-use.html">Terms of Use</a></li>
+                            <li><a href="/rb/page/privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="/rb/page/fair-housing.html" style="border:none;">Fair Housing</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+
+                <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-231973-11']);
+  _gaq.push(['_setDomainName', '.rentbits.com']);
+  _gaq.push(['_setAllowHash', 'false']);
+  _gaq.push(['_trackPageview']);
+  _gaq.push(['_trackPageLoadTime']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+                </script>
+
+                <script type="text/javascript">
+  (function() {
+    window._pa = window._pa || {};
+    // _pa.orderId = "myOrderId"; // OPTIONAL: attach unique conversion identifier to conversions
+    // _pa.revenue = "19.99"; // OPTIONAL: attach dynamic purchase values to conversions
+    // _pa.productId = "myProductId"; // OPTIONAL: Include product ID for use with dynamic ads
+    var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+    pa.src = ('https:' == document.location.protocol ? 'https:' : 'http:') + "//tag.perfectaudience.com/serve/539a18f82981ff9439000005.js";
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(pa, s);
+  })();
+                </script>
+
+                <script type="text/javascript">
+adroll_adv_id = "EUBSODSDURBEDFWYVWSMII";
+adroll_pix_id = "IUGD3I2QTREUTCTZWDACNV";
+(function () {
+var oldonload = window.onload;
+window.onload = function(){
+   __adroll_loaded=true;
+   var scr = document.createElement("script");
+   var host = (("https:" == document.location.protocol) ? "https://s.adroll.com" : "http://a.adroll.com");
+   scr.setAttribute('async', 'true');
+   scr.type = "text/javascript";
+   scr.src = host + "/j/roundtrip.js";
+   ((document.getElementsByTagName('head') || [null])[0] ||
+    document.getElementsByTagName('script')[0].parentNode).appendChild(scr);
+   if(oldonload){oldonload()}};
+}());
+                </script>
+
+                <script>
+(function() {
+  var _fbq = window._fbq || (window._fbq = []);
+  if (!_fbq.loaded) {
+    var fbds = document.createElement('script');
+    fbds.async = true;
+    fbds.src = '//connect.facebook.net/en_US/fbds.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(fbds, s);
+    _fbq.loaded = true;
+  }
+  _fbq.push(['addPixelId', '763058303745924']);
+})();
+window._fbq = window._fbq || [];
+window._fbq.push(['track', 'PixelInitialized', {}]);
+                </script>
+                <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=763058303745924&amp;ev=NoScript" /></noscript>
+
+
+                <div style="padding-top: 24px;">
+
+                    <div style="color: #fff;">Build 170517_2245</div>
+                </div>
+            </div>
+
+        </div>
+
+    </center>
+</body>
+</html>

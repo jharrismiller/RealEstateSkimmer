@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using Common;
 using System.Threading.Tasks;
@@ -36,7 +34,7 @@ namespace Web.Controllers
             {
                 //https://www.realtor.com/realestateandhomes-search/22206/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-220000/pnd-hide/radius-50/sby-6/pg-3
                 var propertyStatuses = _context.PropertyStatus.AsNoTracking().ToList();
-                var propertyTypes = _context.PropertyType.AsNoTracking().ToList();
+
                 var pageNumber = 1;
 
                 var gatheredData = new List<Data.Model.Property>();
@@ -76,6 +74,13 @@ namespace Web.Controllers
                                         Sqft = NumberHelper.GetNumber(prop.QuerySelector("[data-label='property-meta-sqft']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
                                         LotSize = NumberHelper.GetNumber(prop.GetAttribute("data-lot_size")),
                                     };
+                                    if (newProp.RealtorUrl != null) {
+                                        newProp.RealtorUrl = "https://www.realtor.com" + newProp.RealtorUrl;
+                                    }
+                                    if (newProp.AskingPrice == null)
+                                    {
+                                        newProp.AskingPrice = NumberHelper.GetNumber(prop.QuerySelector("[itemprop='price']")?.GetAttribute("content"));
+                                    }
                                     var status = prop.GetAttribute("data-status");
                                     if (!string.IsNullOrEmpty(status))
                                     {
@@ -88,6 +93,7 @@ namespace Web.Controllers
                                         newProp.PropertyStatusId = propertyStatuses.FirstOrDefault(x => x.Name == status).Id;
                                     }
                                     gatheredData.Add(newProp);
+                                 
                                 }
                             }
                         }
@@ -112,53 +118,7 @@ namespace Web.Controllers
                     }
                     else
                     {
-                        if (!string.IsNullOrEmpty(property.RealtorUrl))
-                        {
-                            var url = $"https://www.realtor.com{property.RealtorUrl}";
-                            property.RealtorUrl = url;
-                            using (HttpResponseMessage response = await client.GetAsync(url))
-                            {
-                                if (response.IsSuccessStatusCode)
-                                {
-                                    using (HttpContent content = response.Content)
-                                    {
-                                        // ... Read the string.
-                                        string pageHtml = await content.ReadAsStringAsync();
-                                        var document = parser.Parse(pageHtml);
-                                        var productID = document.QuerySelector("[itemprop='productID']")?.TextContent;
-                                        property.SourcePropertyId = productID;
-                                        var propType = document.QuerySelector("[name='prop_type']")?.GetAttribute("value");
-                                        if (!string.IsNullOrEmpty(propType))
-                                        {
-                                            if (!propertyTypes.Any(x => x.Name == propType))
-                                            {
-                                                _context.PropertyType.Add(new Data.Model.PropertyType() { Name = propType });
-                                                _context.SaveChanges();
-                                                propertyTypes = _context.PropertyType.AsNoTracking().ToList();
-                                            }
-                                            property.PropertyTypeId = propertyTypes.First(x => x.Name == propType).Id;
-                                        }
-                                        var taxIndex = pageHtml.IndexOf("\"tax\":");
-                                        if (taxIndex > 0)
-                                        {
-                                            var taxEnd = pageHtml.IndexOf(",", taxIndex);
-                                            if (taxEnd > 0 && taxEnd < taxIndex + 14)
-                                            {
-                                                var start = taxIndex + 6;
-                                                var tax = NumberHelper.GetNumber(pageHtml.Substring(start, taxEnd - start));
-                                                if (tax != null)
-                                                {
-                                                    property.AnnualTax = tax;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                                else break;
-                            }
-
-                        }
-                        //https://www.realtor.com/
+                        ////https://www.realtor.com/
                         _context.Property.Add(property);
                     }
                 }
@@ -169,12 +129,75 @@ namespace Web.Controllers
 
 
 
-        [HttpDelete]
-        public ActionResult RentBit()
+        [HttpPost, ValidateAntiForgeryToken]
+        public async Task<IActionResult> CleanUpData()
         {
+            var propertyTypes = _context.PropertyType.AsNoTracking().ToList();
+            var properties = _context.Property.Where(x => x.AnnualTax == null || x.PropertyTypeId == null).ToList();
+            var parser = new HtmlParser();
+            var recordCounter = 0;
+            using (HttpClient client = new HttpClient())
+            {
+                foreach (var property in properties)
+                {
+                    if (!string.IsNullOrEmpty(property.RealtorUrl))
+                    {
+                        System.Diagnostics.Debug.WriteLine(property.RealtorUrl);
+                        using (HttpResponseMessage response = await client.GetAsync(property.RealtorUrl))
+                        {
+                            if (response.IsSuccessStatusCode)
+                            {
+                                using (HttpContent content = response.Content)
+                                {
+                                    // ... Read the string.
+                                    string pageHtml = await content.ReadAsStringAsync();
+                                    var document = parser.Parse(pageHtml);
+                                    var productID = document.QuerySelector("[itemprop='productID']")?.TextContent;
+                                    property.SourcePropertyId = productID;
+                                    var propType = document.QuerySelector("[name='prop_type']")?.GetAttribute("value");
+                                    if (!string.IsNullOrEmpty(propType))
+                                    {
+                                        if (!propertyTypes.Any(x => x.Name == propType))
+                                        {
+                                            _context.PropertyType.Add(new Data.Model.PropertyType() { Name = propType });
+                                            _context.SaveChanges();
+                                            propertyTypes = _context.PropertyType.AsNoTracking().ToList();
+                                        }
+                                        property.PropertyTypeId = propertyTypes.First(x => x.Name == propType).Id;
+                                    }
+                                    var taxIndex = pageHtml.IndexOf("\"tax\":");
+                                    if (taxIndex > 0)
+                                    {
+                                        var taxEnd = pageHtml.IndexOf(",", taxIndex);
+                                        if (taxEnd > 0 && taxEnd < taxIndex + 14)
+                                        {
+                                            var start = taxIndex + 6;
+                                            var tax = NumberHelper.GetNumber(pageHtml.Substring(start, taxEnd - start));
+                                            if (tax != null)
+                                            {
+                                                property.AnnualTax = tax;
+                                            }
+                                        }
+                                    }
+                                 
+                                        
+                                    
+                                }
+                            }
+                        }
 
+                    }
+                    if (recordCounter > 12)
+                    {
+                        recordCounter = -1;
+                       await _context.SaveChangesAsync();
+                    }
+                    recordCounter++;
+                }
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
 
-            return View();
         }
     }
 
