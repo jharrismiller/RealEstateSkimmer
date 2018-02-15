@@ -37,10 +37,11 @@ namespace Data.Migrations
 
                     b.Property<int?>("AskingPrice");
 
-                    b.Property<decimal?>("Baths");
+                    b.Property<decimal?>("Baths")
+                        .HasColumnType("decimal(3,1)");
 
                     b.Property<int?>("Beds")
-                        .HasColumnType("decimal(3,1)");
+                        .HasColumnType("int");
 
                     b.Property<string>("City")
                         .HasMaxLength(100);
@@ -88,7 +89,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Model.PropertyStatus", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -101,7 +103,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Model.PropertyTag", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -131,7 +134,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Model.PropertyType", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()

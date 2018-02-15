@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Text;
+using Common;
 using System.Threading.Tasks;
 using AngleSharp.Parser.Html;
 using Data;
@@ -21,7 +21,7 @@ namespace Web.Controllers
         {
             _context = context;
         }
-   
+
         public IActionResult Index()
         {
             var viewModel = new RealtorSearchViewModel();
@@ -70,11 +70,11 @@ namespace Web.Controllers
                                         RealtorPropertyId = prop.GetAttribute("data-propertyid"),
                                         Latitude = prop.QuerySelector("[itemprop='latitude']")?.GetAttribute("content"),
                                         Longitude = prop.QuerySelector("[itemprop='longitude']")?.GetAttribute("content"),
-                                        AskingPrice = GetNumber(prop.GetAttribute("data-price")),
-                                        Beds = GetNumber(prop.QuerySelector("[data-label='property-meta-beds']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
-                                        Baths = GetDecimal(prop.GetAttribute("data-baths")),
-                                        Sqft = GetNumber(prop.QuerySelector("[data-label='property-meta-sqft']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
-                                        LotSize = GetNumber(prop.GetAttribute("data-lot_size")),
+                                        AskingPrice = NumberHelper.GetNumber(prop.GetAttribute("data-price")),
+                                        Beds = NumberHelper.GetNumber(prop.QuerySelector("[data-label='property-meta-beds']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
+                                        Baths = NumberHelper.GetDecimal(prop.GetAttribute("data-baths")),
+                                        Sqft = NumberHelper.GetNumber(prop.QuerySelector("[data-label='property-meta-sqft']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
+                                        LotSize = NumberHelper.GetNumber(prop.GetAttribute("data-lot_size")),
                                     };
                                     var status = prop.GetAttribute("data-status");
                                     if (!string.IsNullOrEmpty(status))
@@ -145,7 +145,7 @@ namespace Web.Controllers
                                             if (taxEnd > 0 && taxEnd < taxIndex + 14)
                                             {
                                                 var start = taxIndex + 6;
-                                                var tax = GetNumber(pageHtml.Substring(start, taxEnd - start));
+                                                var tax = NumberHelper.GetNumber(pageHtml.Substring(start, taxEnd - start));
                                                 if (tax != null)
                                                 {
                                                     property.AnnualTax = tax;
@@ -167,43 +167,11 @@ namespace Web.Controllers
             }
         }
 
-        private decimal? GetDecimal(string value)
-        {
-            decimal val;
-            if (decimal.TryParse(value, out val))
-            {
-                return val;
-            }
-            return null;
-        }
-        private int? GetNumber(string value)
-        {
-            int val;
-            if (int.TryParse(value, out val))
-            {
-                return val;
-            }
-            else if (value != null)
-            {
-                var validNum = new StringBuilder();
-                foreach (var c in value)
-                {
-                    if (char.IsNumber(c))
-                        validNum.Append(c);
-                    else if (c == '.')
-                        break;
-                }
-                if (int.TryParse(validNum.ToString(), out val))
-                {
-                    return val;
-                }
-            }
-            return null;
-        }
 
 
         [HttpDelete]
-        public ActionResult RentBit() {
+        public ActionResult RentBit()
+        {
 
 
             return View();

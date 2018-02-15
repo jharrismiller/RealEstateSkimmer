@@ -11,8 +11,8 @@ using System;
 namespace Data.Migrations
 {
     [DbContext(typeof(RealEstateContext))]
-    [Migration("20180214062915_AdditionalPropertyInfo2")]
-    partial class AdditionalPropertyInfo2
+    [Migration("20180215060418_StartOver")]
+    partial class StartOver
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,17 +32,26 @@ namespace Data.Migrations
                     b.Property<string>("Address2")
                         .HasMaxLength(50);
 
+                    b.Property<int?>("AnnualHOA");
+
+                    b.Property<int?>("AnnualTax");
+
                     b.Property<int?>("AskingPrice");
 
-                    b.Property<int?>("Baths");
+                    b.Property<decimal?>("Baths")
+                        .HasColumnType("decimal(3,1)");
 
-                    b.Property<int?>("Beds");
+                    b.Property<int?>("Beds")
+                        .HasColumnType("int");
 
                     b.Property<string>("City")
                         .HasMaxLength(100);
 
-                    b.Property<string>("ListedAddress")
-                        .HasMaxLength(500);
+                    b.Property<string>("Latitude")
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Longitude")
+                        .HasMaxLength(30);
 
                     b.Property<int?>("LotSize");
 
@@ -58,6 +67,11 @@ namespace Data.Migrations
 
                     b.Property<string>("RealtorUrl")
                         .HasMaxLength(550);
+
+                    b.Property<string>("SourcePropertyId")
+                        .HasMaxLength(20);
+
+                    b.Property<int?>("Sqft");
 
                     b.Property<string>("State")
                         .HasMaxLength(50);
@@ -76,7 +90,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Model.PropertyStatus", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -89,7 +104,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Model.PropertyTag", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -119,7 +135,8 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Model.PropertyType", b =>
                 {
-                    b.Property<byte>("Id");
+                    b.Property<byte>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -128,6 +145,33 @@ namespace Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("PropertyType");
+                });
+
+            modelBuilder.Entity("Data.Model.RentBits", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Location")
+                        .HasMaxLength(70);
+
+                    b.Property<int>("OneBedRoom");
+
+                    b.Property<int>("ThreeOrMoreBedRoom");
+
+                    b.Property<int>("TwoBedRoom");
+
+                    b.Property<string>("Type")
+                        .HasMaxLength(10);
+
+                    b.Property<string>("Url");
+
+                    b.Property<string>("Zip")
+                        .HasMaxLength(10);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RentBits");
                 });
 
             modelBuilder.Entity("Data.Model.Property", b =>

@@ -20,8 +20,11 @@ namespace Data
                     .HasDefaultValueSql("getdate()");
 
 
+            modelBuilder.Entity<Property>().Property(r => r.Baths)
+            .HasColumnType("decimal(3,1)").IsRequired(false);
+
             modelBuilder.Entity<Property>().Property(r => r.Beds)
-            .HasColumnType("decimal(3,1)");
+                .HasColumnType("int").IsRequired(false);
 
         }
         public DbSet<Property> Property { get; set; }

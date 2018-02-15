@@ -17,3 +17,10 @@
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+<br/>
+<h2>Load Missing Rent Bits Data</h2>
+<form method="post" action="@Url.Action("GetDataForCurrentDbZips")">
+    @Html.AntiForgeryToken()
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

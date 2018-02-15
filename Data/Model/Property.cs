@@ -6,6 +6,7 @@ namespace Data.Model
     public class Property
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [StringLength(550)]
         public string RealtorUrl { get; set; }
