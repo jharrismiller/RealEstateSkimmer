@@ -8,6 +8,7 @@ using Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Web.Models.Default;
+using System;
 
 namespace Web.Controllers
 {
@@ -30,8 +31,10 @@ namespace Web.Controllers
         public async Task<IActionResult> Index(RealtorSearchViewModel viewModel)
         {
             if (!ModelState.IsValid) return View(viewModel);
+            var rnd = new Random();
             using (HttpClient client = new HttpClient())
             {
+                client.DefaultRequestHeaders.SetUserAgent((new Random()).Next(0, UserAgents.Agents.GetUpperBound(0)));
                 //https://www.realtor.com/realestateandhomes-search/22206/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-220000/pnd-hide/radius-50/sby-6/pg-3
                 var propertyStatuses = _context.PropertyStatus.AsNoTracking().ToList();
 
@@ -42,6 +45,12 @@ namespace Web.Controllers
 
                 while (pageNumber <= viewModel.PagesToCapture)
                 {
+                    //if (pageNumber % 3 == 0)
+                    //{
+                    //    client.DefaultRequestHeaders.SetUserAgentAndRecycleIndex(agent);
+                    //    agent++;
+                    //}
+                    System.Threading.Thread.Sleep(rnd.Next(3000, 8000));
                     var url = $"https://www.realtor.com/realestateandhomes-search/{viewModel.ZipCode}/type-single-family-home,condo-townhome-row-home-co-op,multi-family-home/price-na-{viewModel.MaxPrice}/pnd-hide/radius-{viewModel.Miles}/sby-6/{ (pageNumber == 1 ? "" : "pg-" + pageNumber.ToString())}";
                     using (HttpResponseMessage response = await client.GetAsync(url))
                     {
@@ -74,7 +83,8 @@ namespace Web.Controllers
                                         Sqft = NumberHelper.GetNumber(prop.QuerySelector("[data-label='property-meta-sqft']")?.GetElementsByClassName("data-value").FirstOrDefault()?.TextContent),
                                         LotSize = NumberHelper.GetNumber(prop.GetAttribute("data-lot_size")),
                                     };
-                                    if (newProp.RealtorUrl != null) {
+                                    if (newProp.RealtorUrl != null)
+                                    {
                                         newProp.RealtorUrl = "https://www.realtor.com" + newProp.RealtorUrl;
                                     }
                                     if (newProp.AskingPrice == null)
@@ -93,7 +103,7 @@ namespace Web.Controllers
                                         newProp.PropertyStatusId = propertyStatuses.FirstOrDefault(x => x.Name == status).Id;
                                     }
                                     gatheredData.Add(newProp);
-                                 
+
                                 }
                             }
                         }
@@ -136,13 +146,16 @@ namespace Web.Controllers
             var properties = _context.Property.Where(x => x.AnnualTax == null || x.PropertyTypeId == null).ToList();
             var parser = new HtmlParser();
             var recordCounter = 0;
+            var rnd = new Random();
             using (HttpClient client = new HttpClient())
             {
+                //var agent = 0;
+                //client.DefaultRequestHeaders.SetUserAgent(agent);
+                client.DefaultRequestHeaders.SetUserAgent((new Random()).Next(0, UserAgents.Agents.GetUpperBound(0)));
                 foreach (var property in properties)
                 {
                     if (!string.IsNullOrEmpty(property.RealtorUrl))
                     {
-                        System.Diagnostics.Debug.WriteLine(property.RealtorUrl);
                         using (HttpResponseMessage response = await client.GetAsync(property.RealtorUrl))
                         {
                             if (response.IsSuccessStatusCode)
@@ -179,20 +192,18 @@ namespace Web.Controllers
                                             }
                                         }
                                     }
-                                 
-                                        
-                                    
                                 }
                             }
                         }
-
                     }
-                    if (recordCounter > 12)
-                    {
-                        recordCounter = -1;
-                       await _context.SaveChangesAsync();
-                    }
+                  
+                        await _context.SaveChangesAsync();
+                        //client.DefaultRequestHeaders.SetUserAgentAndRecycleIndex(agent);
+                        //agent++;
+                 
+                    System.Threading.Thread.Sleep(rnd.Next(4000, 8000));
                     recordCounter++;
+                    if (recordCounter >= 100) break;
                 }
             }
             await _context.SaveChangesAsync();
